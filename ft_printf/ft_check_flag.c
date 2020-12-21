@@ -32,12 +32,12 @@ void	check_spec2(t_format *t_node)
 		ft_output_s(t_node);
 	else if (t_node->spec == 'd')
 		ft_output_d(t_node);
-	// else if(t_node->spec == 'c')
-	// 	ft_output_c(t_node);
-	// else if(t_node->spec == 'c')
-	// 	ft_output_c(t_node);
-	// else if(t_node->spec == 'c')
-	// 	ft_output_c(t_node);
+	else if(t_node->spec == 'i')
+		ft_output_d(t_node);
+	else if(t_node->spec == 'c')
+		ft_output_c(t_node);
+	else if(t_node->spec == 'p')
+		ft_output_p(t_node);
 	// else if(t_node->spec == 'c')
 	// 	ft_output_c(t_node);
 	// else if(t_node->spec == 'c')

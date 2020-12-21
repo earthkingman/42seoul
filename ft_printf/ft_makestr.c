@@ -1,6 +1,7 @@
 #include "ft_printf.h"
 
 
+
 void    noflag(t_format *t_node, char *str)
 {
     int i;

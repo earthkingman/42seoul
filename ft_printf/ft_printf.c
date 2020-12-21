@@ -173,13 +173,73 @@ int ft_printf(const char *format, ...)
 int main()
 {
     static char *s_hidden = "hi low\0don't print me lol\0";
-    //ft_printf("%*.*c  %10.s\n",3,10,'a',"123");
+    // ft_printf("%*.*c  %10.s\n",3,10,'a',"123");
     // ft_printf("%*.*d%10.s",3,10,10,"123");
-    //printf("%s\n","123");
-   // ft_printf("%s\n","123");
+    
+   static char	a01;
+    static unsigned char a02;
+    static short a03;
+    static unsigned short a04;
+    static int a05;
+    static unsigned int a06;
+    static long a07;
+    static unsigned long a08;
+    static long long a09;
+    static unsigned long long a10;
+    static char *a11;
+    static void *a12;;
+    
+    // printf("|%10.5c|\n",'1');
+    // ft_printf("|%10.5c|\n",'1');
+    // ft_printf("|%5.7c|\n",'a');
+    // printf("|%5.7c|\n",'a');
+    // ft_printf("|%5.7c|\n",0);
+    // printf("|%5.7c|\n",0);
+   
+    // printf("|%10.5s|\n","0061FF1C");
+    
+    // printf("%p %p %p %p %p %p %p %p %p %p %p %p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+    // ft_printf("%p %p %p %p %p %p %p %p %p %p %p %p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
    
 
-    int a = 10;
+  
+
+    printf("|%p|\n",NULL);
+    ft_printf("|%p|\n",NULL);
+
+    printf("|%0.10p|\n",NULL);
+    ft_printf("|%0.10p|\n",NULL);
+
+    // printf("|%13.10p|\n",&a01);
+    // ft_printf("|%13.10p|\n",&a01);
+
+    // printf("|%5.10p|\n",&a01);
+    // ft_printf("|%5.10p|\n",&a01);
+
+    // printf("|%13.p|\n",&a01);
+    // ft_printf("|%13.p|\n",&a01);
+    
+    // printf("|%013.p|\n",&a01);
+    // ft_printf("|%013.p|\n",&a01);
+    
+    // printf("|%-13.p|\n",&a01);
+    // ft_printf("|%-13.p|\n",&a01);
+    
+    // printf("|%13p|\n",&a01);
+    // ft_printf("|%13p|\n",&a01);
+    
+    // printf("|%13.p|\n",&a01);
+    // ft_printf("|%13.p|\n",&a01);
+    
+    // printf("|%05.5p|\n",&a01);
+    // ft_printf("|%05.5p|\n",&a01);
+   
+
+    // printf("|%-5.1p|\n",&a01);
+    // ft_printf("|%-5.1p|\n",&a01);
+    // printf("|%3.1p|\n",&a01);
+    // ft_printf("|%3.1p|\n",&a01);
+
 
     // printf("|%10.5d|\n",10);
     // ft_printf("|%010.5d%010.5d|\n",123,123);
@@ -337,28 +397,28 @@ int main()
 
 
     
-    ft_printf("|%05.7s|\n",0);
-    printf("|%05.7s|\n",0);
-    ft_printf("|%010.2s|\n",0);
-    printf("|%010.2s|\n",0);
-    ft_printf("|%04.3s|\n",0);
-    printf("|%04.3s|\n",0);
-    ft_printf("|%04.2s|\n",0);
-    printf("|%04.2s|\n",0);
-    ft_printf("|%06.4s|\n",0);
-    printf("|%06.4s|\n",0);
-    ft_printf("|%06.5s|\n",0);
-    printf("|%06.5s|\n",0);
-    ft_printf("|%05.7s|\n",0);
-    printf("|%05.7s|\n",0);
-    ft_printf("|%010.2s|\n",0);
-    printf("|%010.2s|\n",0);
-    ft_printf("|%04.3s|\n",0);
-    printf("|%04.3s|\n",0);
-    ft_printf("|%04.2s|\n",0);
-    printf("|%04.2s|\n",0);
-    ft_printf("|%06.4s|\n",0);
-    printf("|%06.4s|\n",0);
+    // ft_printf("|%05.7s|\n",0);
+    // printf("|%05.7s|\n",0);
+    // ft_printf("|%010.2s|\n",0);
+    // printf("|%010.2s|\n",0);
+    // ft_printf("|%04.3s|\n",0);
+    // printf("|%04.3s|\n",0);
+    // ft_printf("|%04.2s|\n",0);
+    // printf("|%04.2s|\n",0);
+    // ft_printf("|%06.4s|\n",0);
+    // printf("|%06.4s|\n",0);
+    // ft_printf("|%06.5s|\n",0);
+    // printf("|%06.5s|\n",0);
+    // ft_printf("|%05.7s|\n",0);
+    // printf("|%05.7s|\n",0);
+    // ft_printf("|%010.2s|\n",0);
+    // printf("|%010.2s|\n",0);
+    // ft_printf("|%04.3s|\n",0);
+    // printf("|%04.3s|\n",0);
+    // ft_printf("|%04.2s|\n",0);
+    // printf("|%04.2s|\n",0);
+    // ft_printf("|%06.4s|\n",0);
+    // printf("|%06.4s|\n",0);
  
 
     // ft_printf("|%0.5d|\n",0);
