@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+
 typedef struct s_format
 {
     char        *str;
@@ -14,7 +15,6 @@ typedef struct s_format
     char        num[21];
     char        *result;
     va_list     ap;
-    int         negative;
     int         wid;
     int         prec;
     int         size;
@@ -23,9 +23,6 @@ typedef struct s_format
 }               t_format;
 
 
-void    negative_d(t_format *t_node, int num);
-void    positive_d(t_format *t_node, int num);
-void    n_judge_max(t_format *t_node);
 void    init_zero(t_format *t_node);
 void    d_check_null(t_format *t_node);
 void    check_null(t_format *t_node, char **str);
@@ -35,7 +32,6 @@ void    p_noflag(t_format *t_node, char *str);
 void    s_noflag(t_format *t_node, char *str);
 void    s_flag_zero(t_format *t_node, char *str);
 void    s_flag_minus(t_format *t_node, char *str);
-void    n_flag_zero(t_format *t_node, char *str);
 void    flag_zero(t_format *t_node, char *str);
 void    flag_minus(t_format *t_node, char *str);
 void    noflag(t_format *t_node, char *str);

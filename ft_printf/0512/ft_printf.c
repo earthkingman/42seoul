@@ -44,26 +44,6 @@ void    judge_max(t_format *t_node) //너비 정확도 문자열 길이 중 긴�
     }
 }
 
-
-void    n_judge_max(t_format *t_node) //너비 정확도 문자열 길이 중 긴거 리턴
-{
-    if (t_node->prec > t_node->wid)
-    {
-        if (t_node->prec > t_node->size)
-            t_node->max_size = t_node->prec + 1;
-        else
-            t_node->max_size =  t_node->size;
-    }
-    else
-    {
-        if (t_node->wid > t_node-> size)
-            t_node->max_size = t_node->wid;
-        else
-            t_node->max_size = t_node-> size;
-    }
-}
-
-
 void	do_itoa(unsigned int tmp, t_format *t_node, int len)
 {
 	while (tmp > 0)
@@ -104,17 +84,17 @@ void	d_to_str(t_format *t_node, int n)
     }
 	len = check_size(n);
 	if (n < 0)
-    {
+	{
 		tmp = n * -1;
-        t_node->negative = 1;
-        len++;
-        t_node->num[0] = '-';
-    }
+		len++;
+	}
 	else
 		tmp = n;
     t_node->size = len;
 	t_node->num[len] = 0;
 	len--;
+	if (n < 0)
+		t_node->num[0] = '-';
 	do_itoa(tmp, t_node, len);
 }
 
@@ -205,7 +185,20 @@ int main()
     static char *s_hidden = "hi low\0don't print me lol\0";
     // ft_printf("%*.*c  %10.s\n",3,10,'a',"123");
     // ft_printf("%*.*d%10.s",3,10,10,"123");
-
+    
+   static char	a01;
+    static unsigned char a02;
+    static short a03;
+    static unsigned short a04;
+    static int a05;
+    static unsigned int a06;
+    static long a07;
+    static unsigned long a08;
+    static long long a09;
+    static unsigned long long a10;
+    static char *a11;
+    static void *a12;;
+    
     // printf("|%10.5c|\n",'1');
     // ft_printf("|%10.5c|\n",'1');
     // ft_printf("|%5.7c|\n",'a');
@@ -213,106 +206,96 @@ int main()
     // ft_printf("|%5.7c|\n",0);
     // printf("|%5.7c|\n",0);
    
+    // printf("|%10.5s|\n","0061FF1C");
+    
+    // printf("%p %p %p %p %p %p %p %p %p %p %p %p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+    // ft_printf("%p %p %p %p %p %p %p %p %p %p %p %p\n",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12);
+   
 
-    printf("|%03.4d|\n",-1);
-    ft_printf("|%03.4d|\n",-1);
+   printf("|%013.10d|\n",-1);
+    ft_printf("|%013.10d|\n",-1);
+    printf("|%015.14d|\n",-1);
+    ft_printf("|%015.14d|\n",-1);
 
-
-
-    printf("|%010.4d|\n",-1234567);
-    ft_printf("|%010.4d|\n",-1234567);
-///여기임
-    printf("|%06.4d|\n",-1);
-    ft_printf("|%06.4d|\n",-1);
-
-    printf("|%04.5d|\n",-1);
-    ft_printf("|%04.5d|\n",-1);
-
-    printf("|%04.5d|\n",-12345);
-    ft_printf("|%04.5d|\n",-12345);
-
-    printf("|%04.5d|\n",1);
-    ft_printf("|%04.5d|\n",1);
-
-    printf("|%04d|\n",-12345);
-    ft_printf("|%04d|\n",-12345);
-
-    printf("|%04.5d|\n",1);
-    ft_printf("|%04.5d|\n",1);
 
   
 
-    // printf("|%p|\n",NULL);
-    // ft_printf("|%p|\n",NULL);
+    printf("|%p|\n",NULL);
+    ft_printf("|%p|\n",NULL);
 
-    // printf("|%0.10p|\n",NULL);
-    // ft_printf("|%0.10p|\n",NULL);
+    printf("|%0.10p|\n",NULL);
+    ft_printf("|%0.10p|\n",NULL);
 
-    // printf("|%13.10p|\n",&a01);
-    // ft_printf("|%13.10p|\n",&a01);
+    printf("|%13.10p|\n",&a01);
+    ft_printf("|%13.10p|\n",&a01);
 
-    // printf("|%5.10p|\n",&a01);
-    // ft_printf("|%5.10p|\n",&a01);
+    printf("|%5.10p|\n",&a01);
+    ft_printf("|%5.10p|\n",&a01);
 
-    // printf("|%13.p|\n",&a01);
-    // ft_printf("|%13.p|\n",&a01);
+    printf("|%13.p|\n",&a01);
+    ft_printf("|%13.p|\n",&a01);
     
-    // printf("|%013.p|\n",&a01);
-    // ft_printf("|%013.p|\n",&a01);
+    printf("|%013.p|\n",&a01);
+    ft_printf("|%013.p|\n",&a01);
     
-    // printf("|%-13.p|\n",&a01);
-    // ft_printf("|%-13.p|\n",&a01);
+    printf("|%-13.p|\n",&a01);
+    ft_printf("|%-13.p|\n",&a01);
     
-    // printf("|%13p|\n",&a01);
-    // ft_printf("|%13p|\n",&a01);
+    printf("|%13p|\n",&a01);
+    ft_printf("|%13p|\n",&a01);
     
-    // printf("|%13.p|\n",&a01);
-    // ft_printf("|%13.p|\n",&a01);
+    printf("|%13.p|\n",&a01);
+    ft_printf("|%13.p|\n",&a01);
     
-    // printf("|%05.5p|\n",&a01);
-    // ft_printf("|%05.5p|\n",&a01);
+    printf("|%05.5p|\n",&a01);
+    ft_printf("|%05.5p|\n",&a01);
    
 
-    // printf("|%-5.1p|\n",&a01);
-    // ft_printf("|%-5.1p|\n",&a01);
-    // printf("|%3.1p|\n",&a01);
-    // ft_printf("|%3.1p|\n",&a01);
+    printf("|%-5.1p|\n",&a01);
+    ft_printf("|%-5.1p|\n",&a01);
+    printf("|%3.1p|\n",&a01);
+    ft_printf("|%3.1p|\n",&a01);
 
 
-    // ft_printf("|%5.7d|\n",123);
-    // printf("|%5.7d|\n",123);
-    // ft_printf("|%10.2d|\n",123);
-    // printf("|%10.2d|\n",123);
-    // ft_printf("|%4.3d|\n",123);
-    // printf("|%4.3d|\n",123);
-    // ft_printf("|%4.2d|\n",123);
-    // printf("|%4.2d|\n",123);
-    // ft_printf("|%6.4d|\n",123);
-    // printf("|%6.4d|\n",123);
-    // ft_printf("|%6.12d|\n",111111);
-    // printf("|%6.12d|\n",111111);
-    // ft_printf("|%5.7d|\n",123);
-    // printf("|%5.7d|\n",123);
-    // ft_printf("|%10.2d|\n",123);
-    // printf("|%10.2d|\n",123);
-    // ft_printf("|%4.3d|\n",123);
-    // printf("|%4.3d|\n",123);
-    // ft_printf("|%4.2d|\n",123);
-    // printf("|%4.2d|\n",123);
-    // ft_printf("|%6.4d|\n",123);
-    // printf("|%6.4d|\n",123);
-    // ft_printf("|%6.5d|\n",123);
-    // printf("|%6.5d|\n",123);
-    // printf("|%10.7d|\n",1234);
-    // ft_printf("|%10.7d|\n",1234);
-    // printf("|%3.2d|\n",123);
-    // ft_printf("|%3.2d|\n",123);
-    // ft_printf("|%3.4d|\n",123);
-    // printf("|%3.4d|\n",123);
-    // printf("|%10.1d|\n", 123456);
-    // ft_printf("|%10.1d|\n", 123456);
-    // printf("|%5d|\n",-1231232);
-    // ft_printf("|%5d|\n",-1231232);
+    // printf("|%10.5d|\n",10);
+    // ft_printf("|%010.5d%010.5d|\n",123,123);
+    // printf("|%010.5d%010.5d|\n",123,123);
+    // ft_printf("|%010.2d|\n",123);
+
+//     ft_printf("|%5.7d|\n",123);
+//     printf("|%5.7d|\n",123);
+//     ft_printf("|%10.2d|\n",123);
+//     printf("|%10.2d|\n",123);
+//     ft_printf("|%4.3d|\n",123);
+//     printf("|%4.3d|\n",123);
+//     ft_printf("|%4.2d|\n",123);
+//     printf("|%4.2d|\n",123);
+//     ft_printf("|%6.4d|\n",123);
+//     printf("|%6.4d|\n",123);
+//     ft_printf("|%6.12d|\n",111111);
+//     printf("|%6.12d|\n",111111);
+//     ft_printf("|%5.7d|\n",123);
+//     printf("|%5.7d|\n",123);
+//     ft_printf("|%10.2d|\n",123);
+//     printf("|%10.2d|\n",123);
+//     ft_printf("|%4.3d|\n",123);
+//     printf("|%4.3d|\n",123);
+//     ft_printf("|%4.2d|\n",123);
+//     printf("|%4.2d|\n",123);
+//     ft_printf("|%6.4d|\n",123);
+//     printf("|%6.4d|\n",123);
+//     ft_printf("|%6.5d|\n",123);
+//     printf("|%6.5d|\n",123);
+//     printf("|%10.7d|\n",1234);
+//     ft_printf("|%10.7d|\n",1234);
+//     printf("|%3.2d|\n",123);
+//     ft_printf("|%3.2d|\n",123);
+//     ft_printf("|%3.4d|\n",123);
+//     printf("|%3.4d|\n",123);
+//     printf("|%10.1d|\n", 123456);
+//     ft_printf("|%10.1d|\n", 123456);
+//     printf("|%5d|\n",-1231232131321);
+//     ft_printf("|%5d|\n",-1231232131321);
 //     printf("|%10.3d|\n",123);
 //     ft_printf("|%10.3d|\n",123);
 //     printf("|%10.d|\n",1243);
@@ -396,53 +379,6 @@ int main()
 //     ft_printf("|%-3.d|\n",123);
 //     printf("|%-8d|\n", NULL);
 //     ft_printf("|%-8d|\n", NULL);
-
-
-
-
-
-
-    // ft_printf("|%05.7d|\n",-12);
-    // printf("|%05.7d|\n",-12);
-    // ft_printf("|%05.7d|\n",-1);
-    // printf("|%05.7d|\n",-1);
-    // ft_printf("|%05.7d|\n",-1);
-    // printf("|%05.7d|\n",-1);
-    // ft_printf("|%05.7d|\n",-1234);
-    // printf("|%05.7d|\n",-1234);
-    
-    ft_printf("|%010.2d|\n",-1234);
-    printf("|%010.2d|\n",-1234);
-  
-
-    
-    // ft_printf("|%04.3d|\n",-1234);
-    // printf("|%04.3d|\n",-1234);
-    // ft_printf("|%04.2d|\n",-1234);
-    // printf("|%04.2d|\n",-1234);
-    // ft_printf("|%06.4d|\n",-1234);
-    // printf("|%06.4d|\n",-1234);
-    // ft_printf("|%06.5d|\n",-1234);
-    // printf("|%06.5d|\n",-1234);
-    // ft_printf("|%05.7d|\n",-1234);
-    // printf("|%05.7d|\n",-1234);
-    // ft_printf("|%010.2d|\n",-1234);
-    // printf("|%010.2d|\n",-1234);
-    // ft_printf("|%04.3d|\n",-1234);
-    // printf("|%04.3d|\n",-1234);
-    // ft_printf("|%04.2d|\n",-1234);
-    // printf("|%04.2d|\n",-1234);
-
-    // ft_printf("|%06.4d|\n",-1234);
-    // printf("|%06.4d|\n",-1234);
-
-
-
-    
-    
-
-
-
 
 
 //     ft_printf("|%05.7d|\n",12);
