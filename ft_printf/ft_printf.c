@@ -116,6 +116,6 @@ int ft_printf(const char *format, ...)
     init_firstnode(t_node,(char *)format);
     start_printf(t_node);
     va_end(t_node->ap);
-	size = t_node->nums ;
+	size = t_node->nums;
 	return(size);
 }
