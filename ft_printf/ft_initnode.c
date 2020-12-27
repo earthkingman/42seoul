@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 21:07:25 by ji-park           #+#    #+#             */
-/*   Updated: 2020/12/27 21:07:27 by ji-park          ###   ########.fr       */
+/*   Updated: 2020/12/28 03:36:01 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_firstnode(t_format *t_node, char *format)
 	(t_node)->prec = 0;
 	(t_node)->size = 0;
 	(t_node)->nums = 0;
+	(t_node)->result = 0;
 }
 
 void	init_node(t_format *t_node)
@@ -58,4 +59,7 @@ void	init_node(t_format *t_node)
 	(t_node)->wid = 0;
 	(t_node)->prec = 0;
 	(t_node)->size = 0;
+	free((t_node)->result);
+	(t_node)->result = 0;
+
 }

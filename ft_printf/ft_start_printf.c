@@ -13,12 +13,14 @@ void	start_printf(t_format *t_node)
 			check_spec(t_node);
 			ft_output(t_node);
 			ft_putstr(t_node);
+			t_node->nums += pf_strlen(t_node->result);
 			init_node(t_node);
 		}
         else
         {
             ft_putchar(*t_node->str);
             t_node->str++;
+			t_node->nums++;
         }
     }
 }

@@ -63,7 +63,6 @@ void    n_judge_max(t_format *t_node)
     }
 }
 
-
 void	do_itoa(unsigned int tmp, t_format *t_node, int len)
 {
 	while (tmp > 0)
@@ -109,11 +108,14 @@ void    ft_putstr(t_format *t_node)
 
 int ft_printf(const char *format, ...)
 {
+	int size;
+
     t_format *t_node;
     t_node = (t_format*)malloc(sizeof(t_format));
     va_start(t_node->ap,format);
     init_firstnode(t_node,(char *)format);
     start_printf(t_node);
     va_end(t_node->ap);
-	return(1);
+	size = t_node->nums ;
+	return(size);
 }

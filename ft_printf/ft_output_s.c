@@ -13,7 +13,7 @@ void    ft_output_s(t_format *t_node)
 
     str = va_arg(t_node->ap, char *);
     t_node->size = pf_strlen(str);
-    if (t_node->size == 0)
+    if (t_node->size == 0 && str == NULL)
             check_null(t_node, &str);
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 1))) == 0)
