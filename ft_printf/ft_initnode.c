@@ -18,7 +18,6 @@ void    init_firstnode(t_format *t_node, char *format)
 		(t_node)->num[i] = 0;
 		i++;
 	}
-	(t_node)->negative = 0;
 	(t_node)->max_size = 0;
     (t_node)->wid = 0;
     (t_node)->prec = 0;
@@ -42,7 +41,6 @@ void    init_node(t_format *t_node)
 		(t_node)->num[i] = 0;
 		i++;
 	}
-	(t_node)->negative = 0;
 	(t_node)->max_size = 0;
 	(t_node)->spec = 0;
     (t_node)->wid = 0;
