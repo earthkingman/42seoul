@@ -26,7 +26,7 @@ void	pf_bzero(void *ptr, size_t size)
 	}
 }
 
-void    judge_max(t_format *t_node) //너비 정확도 문자열 길이 중 긴거 리턴
+void    judge_max(t_format *t_node)
 {
     if (t_node->prec > t_node->wid)
     {
@@ -45,7 +45,7 @@ void    judge_max(t_format *t_node) //너비 정확도 문자열 길이 중 긴�
 }
 
 
-void    n_judge_max(t_format *t_node) //너비 정확도 문자열 길이 중 긴거 리턴
+void    n_judge_max(t_format *t_node)
 {
     if (t_node->prec > t_node->wid)
     {
@@ -112,36 +112,8 @@ int ft_printf(const char *format, ...)
     t_format *t_node;
     t_node = (t_format*)malloc(sizeof(t_format));
     va_start(t_node->ap,format);
-    init_firstnode(t_node,(char *)format); //노드초기화
+    init_firstnode(t_node,(char *)format);
     start_printf(t_node);
     va_end(t_node->ap);
 	return(1);
-}
-
-
-int main()
-{
-    static char *s_hidden = "hi low\0don't print me lol\0";
-    
-    printf("|%10.1d|\n", 0);
-    ft_printf("|%10.1d|\n", 0);
-
-    printf("|%5d|\n",0);
-    ft_printf("|%5d|\n",0);
-
-    printf("|%10.3d|\n",0);
-    ft_printf("|%10.3d|\n",0);
-
-    printf("|%10.d|\n",0);
-    ft_printf("|%10.d|\n",0);
-
-    printf("|%3.d|\n",0);
-    ft_printf("|%3.d|\n",0);
-
-    printf("|%10.d|\n",1);
-    ft_printf("|%10.d|\n",1);
-    
-    printf("|%3.d|\n",1);
-    ft_printf("|%3.d|\n",1);
-    return(0);
 }

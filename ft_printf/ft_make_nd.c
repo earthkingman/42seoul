@@ -10,7 +10,7 @@ void    n_noflag(t_format *t_node, char *str)
     j = 0;
     if (str != NULL)
     {
-        *str++;
+        str++;
         size = t_node->size;
         if (t_node->size < t_node->prec)
             size = t_node->prec;
@@ -35,7 +35,7 @@ void    n_flag_minus(t_format *t_node, char *str)
     i = 0;
     if (str != NULL)
     { 
-        *str++;
+        str++;
         t_node->result[i++] = '-';
         while (t_node->prec > t_node->size + i - 2 )
             t_node->result[i++] = '0';       
@@ -52,7 +52,7 @@ void    n_flag_zero(t_format *t_node, char *str)
     int     j;
     
     i = 0;
-    *str++;
+    str++;
     j = t_node->max_size - t_node->size;
     if (t_node->flag[2] == 1)
     {

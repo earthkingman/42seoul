@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 19:35:12 by ji-park           #+#    #+#             */
-/*   Updated: 2020/12/27 19:36:55 by ji-park          ###   ########.fr       */
+/*   Updated: 2020/12/27 21:56:46 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void	check_flag(t_format *t_node)
 
 void	check_wid(t_format *t_node)
 {
-	int i;
-	int sign;
 	int answer;
 
 	t_node->wid = check_star(t_node);

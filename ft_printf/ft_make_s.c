@@ -3,7 +3,6 @@
 void    s_noflag(t_format *t_node, char *str)
 {
     int i;
-    int prec;
     int size;
 
     i = 0;
@@ -52,7 +51,6 @@ void    s_flag_minus(t_format *t_node, char *str)
 void    s_flag_zero(t_format *t_node, char *str)
 {
     int i;
-    int prec;
     int size;
 
     i = 0;
