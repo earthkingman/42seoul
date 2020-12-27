@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_info.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/27 19:35:12 by ji-park           #+#    #+#             */
+/*   Updated: 2020/12/27 19:36:55 by ji-park          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int		check_star(t_format *t_node)
@@ -8,7 +20,7 @@ int		check_star(t_format *t_node)
 	if (*t_node->str == '*')
 	{
 		t_node->flag[3] = 1;
-		num = va_arg(t_node->ap, int); 
+		num = va_arg(t_node->ap, int);
 		t_node->str++;
 	}
 	return (num);
@@ -17,17 +29,17 @@ int		check_star(t_format *t_node)
 void	check_spec(t_format *t_node)
 {
 	if (*t_node->str == 'c')
-		t_node->spec = 'c';	
+		t_node->spec = 'c';
 	else if (*t_node->str == 's')
 		t_node->spec = 's';
 	else if (*t_node->str == 'd')
 		t_node->spec = 'd';
 	else if (*t_node->str == 'p')
-		t_node->spec = 'p';	
+		t_node->spec = 'p';
 	else if (*t_node->str == 'i')
 		t_node->spec = 'i';
 	else if (*t_node->str == 'u')
-		t_node->spec = 'u';	
+		t_node->spec = 'u';
 	else if (*t_node->str == 'x')
 		t_node->spec = 'x';
 	else if (*t_node->str == 'X')
@@ -54,6 +66,7 @@ void	check_wid(t_format *t_node)
 	int i;
 	int sign;
 	int answer;
+
 	t_node->wid = check_star(t_node);
 	if (t_node->wid > 0)
 		return ;
@@ -79,7 +92,7 @@ void	check_prec(t_format *t_node)
 		t_node->str++;
 		t_node->prec = check_star(t_node);
 		if (t_node->prec > 0)
-			return ;	
+			return ;
 		while (*t_node->str >= '0' && *t_node->str <= '9')
 		{
 			answer = answer * 10 + (*t_node->str - 48);
