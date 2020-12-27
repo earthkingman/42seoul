@@ -20,7 +20,7 @@ void    positive_d(t_format *t_node, int num)
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 1))) == 0)
         return ;
-    ft_bzero(t_node->result,t_node->max_size + 1);
+    pf_bzero(t_node->result,t_node->max_size + 1);
     if (t_node->flag[0] == 1)
         flag_minus(t_node, t_node->num);
     else if (t_node->flag[1] == 1)
@@ -36,7 +36,7 @@ void    negative_d(t_format *t_node, int num)
     n_judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 1))) == 0)
         return ;
-    ft_bzero(t_node->result,t_node->max_size + 1);
+    pf_bzero(t_node->result,t_node->max_size + 1);
     if (t_node->flag[0] == 1)
         n_flag_minus(t_node, t_node->num);
     else if (t_node->flag[1] == 1)

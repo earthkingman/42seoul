@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_strlen(char *str)
+int	pf_strlen(char *str)
 {
 	int i;
 
@@ -12,7 +12,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_bzero(void *ptr, size_t size)
+void	pf_bzero(void *ptr, size_t size)
 {
 	int				i;
 	unsigned char	*startptr;
