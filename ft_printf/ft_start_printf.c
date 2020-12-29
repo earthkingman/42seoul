@@ -13,6 +13,7 @@ void	start_printf(t_format *t_node)
 			check_spec(t_node);
 			if (t_node->spec == '0')
 				return ;
+			two_flag(t_node);
 			ft_output(t_node);
 			ft_putstr(t_node);
 			t_node->nums += pf_strlen(t_node->result);
@@ -49,4 +50,10 @@ void	ft_output(t_format *t_node)
 		ft_output_x(t_node);
 	else if(t_node->spec == '%')
 		ft_output_percent(t_node);
+}
+
+void	two_flag(t_format *t_node)
+{
+	if (t_node->flag[0] == 1 && t_node->flag[1] == 1)
+		t_node->flag[0] = 0;
 }

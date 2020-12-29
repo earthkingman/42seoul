@@ -72,5 +72,6 @@ void    init_firstnode(t_format *t_node, char *format);
 void    init_node(t_format *t_node);
 void	check_flag(t_format *t_node);
 void	start_printf(t_format *t_node);
+void	two_flag(t_format *t_node);
 
 #endif
