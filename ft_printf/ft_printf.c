@@ -115,21 +115,13 @@ int ft_printf(const char *format, ...)
     va_start(t_node->ap,format);
     init_firstnode(t_node,(char *)format);
     start_printf(t_node);
+    if (t_node->spec == 0)
+    {
+        free(t_node);
+        return -1;
+    }
     va_end(t_node->ap);
 	size = t_node->nums;
+    free(t_node);
 	return(size);
-}
-
-int main()
-{
-    static char *s_hidden = "hi low\0don't print me lol\0";
-    
-    
-    printf("%010.55%\n");
-    ft_printf("%010.55%\n");
-    // ft_printf("%%\n");
-
-
-
-    return(0);
 }
