@@ -55,5 +55,5 @@ void	ft_output(t_format *t_node)
 void	two_flag(t_format *t_node)
 {
 	if (t_node->flag[0] == 1 && t_node->flag[1] == 1)
-		t_node->flag[0] = 0;
+		t_node->flag[1] = 0;
 }
