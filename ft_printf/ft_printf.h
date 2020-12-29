@@ -50,6 +50,7 @@ void    ft_output_p(t_format *t_node);
 void    ft_output_s(t_format *t_node);
 void    ft_output_d(t_format *t_node);
 void    ft_output_c(t_format *t_node);
+void    ft_output_percent(t_format *t_node);
 void    select_spec(t_format *t_node);
 long long	check_size(long long n);
 void	do_itoa(unsigned int tmp, t_format *t_node, int len);

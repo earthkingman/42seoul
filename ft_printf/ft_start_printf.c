@@ -45,4 +45,6 @@ void	ft_output(t_format *t_node)
 		ft_output_x(t_node);
 	else if(t_node->spec == 'X')
 		ft_output_x(t_node);
+	else if(t_node->spec == '%')
+		ft_output_percent(t_node);
 }

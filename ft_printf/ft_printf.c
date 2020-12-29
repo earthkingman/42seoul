@@ -119,3 +119,17 @@ int ft_printf(const char *format, ...)
 	size = t_node->nums;
 	return(size);
 }
+
+int main()
+{
+    static char *s_hidden = "hi low\0don't print me lol\0";
+    
+    
+    printf("%010.55%\n");
+    ft_printf("%010.55%\n");
+    // ft_printf("%%\n");
+
+
+
+    return(0);
+}

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	flag_zero(t_format *t_node, char *str)
+void flag_zero(t_format *t_node, char *str)
 {
 	int i;
 	int j;
@@ -40,9 +40,9 @@ void	flag_zero(t_format *t_node, char *str)
 	}
 }
 
-void	flag_minus(t_format *t_node, char *str)
+void flag_minus(t_format *t_node, char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (str != NULL)
@@ -56,11 +56,11 @@ void	flag_minus(t_format *t_node, char *str)
 	}
 }
 
-void	noflag(t_format *t_node, char *str)
+void noflag(t_format *t_node, char *str)
 {
-	int	i;
-	int	j;
-	int	size;
+	int i;
+	int j;
+	int size;
 
 	i = 0;
 	j = 0;
