@@ -14,8 +14,8 @@
 
 void	flag_zero(t_format *t_node, char *str)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
 	j = t_node->max_size - t_node->size;
@@ -23,12 +23,16 @@ void	flag_zero(t_format *t_node, char *str)
 	{
 		if (t_node->prec > t_node->size)
 			j = t_node->max_size - t_node->prec;
-	}
-	if (str != NULL)
-	{
 		while (j-- > 0)
 			t_node->result[i++] = ' ';
 		j = t_node->prec - t_node->size;
+		while (j-- > 0)
+			t_node->result[i++] = '0';
+		while (*str != 0)
+			t_node->result[i++] = *str++;
+	}
+	else
+	{
 		while (j-- > 0)
 			t_node->result[i++] = '0';
 		while (*str != 0)
