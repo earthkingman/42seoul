@@ -49,8 +49,8 @@ void   exception_null(t_format *t_node, int num)
 {
     if (t_node->flag[2] == 1 && t_node->prec == 0 && num == 0)
     {
-        t_node->num[0] = ' ';
+        t_node->num[0] = 0;
         t_node->num[1] = 0;
-        t_node->size = 1;
+        t_node->size = 0;
     }
 }
