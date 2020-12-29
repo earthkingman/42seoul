@@ -66,7 +66,7 @@ void n_flag_zero(t_format *t_node, char *str)
         while (*str != 0)
             t_node->result[i++] = *str++;
     }
-    if (str != NULL)
+    else
     {
         t_node->result[i++] = '-';
         while (j-- > 0)
