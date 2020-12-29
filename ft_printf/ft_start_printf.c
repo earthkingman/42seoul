@@ -11,7 +11,7 @@ void	start_printf(t_format *t_node)
         	check_wid(t_node);
         	check_prec(t_node);
 			check_spec(t_node);
-			if (t_node->spec == 0)
+			if (t_node->spec == '0')
 				return ;
 			ft_output(t_node);
 			ft_putstr(t_node);

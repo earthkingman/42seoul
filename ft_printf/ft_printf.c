@@ -115,7 +115,7 @@ int ft_printf(const char *format, ...)
     va_start(t_node->ap,format);
     init_firstnode(t_node,(char *)format);
     start_printf(t_node);
-    if (t_node->spec == 0)
+    if (t_node->spec == '0')
     {
         free(t_node);
         return -1;

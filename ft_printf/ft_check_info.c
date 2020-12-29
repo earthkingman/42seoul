@@ -46,6 +46,8 @@ void	check_spec(t_format *t_node)
 		t_node->spec = 'X';
 	else if (*t_node->str == '%')
 		t_node->spec = '%';
+	else
+		t_node->spec = '0';
 	t_node->str++;
 }
 
