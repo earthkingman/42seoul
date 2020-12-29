@@ -69,7 +69,7 @@ void     h_to_str(long long addr, t_format *t_node)
         addr /= 16;
     }
     t_node->num[0] = '0';
-    t_node->num[1] = 'X';
+    t_node->num[1] = 'x';
     t_node->num[2] = temp == 0 ? '0' : t_node->num[2];
 }
 
