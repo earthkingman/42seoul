@@ -46,21 +46,18 @@ void    n_flag_minus(t_format *t_node, char *str)
     }
 }
 
-void    n_flag_zero(t_format *t_node, char *str)
+void n_flag_zero(t_format *t_node, char *str)
 {
-    int     i;
-    int     j;
-    
+    int i;
+    int j;
+
     i = 0;
     str++;
     j = t_node->max_size - t_node->size;
     if (t_node->flag[2] == 1)
     {
         if (t_node->prec > t_node->size)
-           j = t_node->max_size - t_node->prec - 1;
-    }
-    if (str != NULL)
-    {
+            j = t_node->max_size - t_node->prec - 1;
         while (j-- > 0)
             t_node->result[i++] = ' ';
         t_node->result[i++] = '-';
@@ -68,6 +65,14 @@ void    n_flag_zero(t_format *t_node, char *str)
         while (j-- > 0)
             t_node->result[i++] = '0';
         while (*str != 0)
-             t_node->result[i++] = *str++;
+            t_node->result[i++] = *str++;
+    }
+    if (str != NULL)
+    {
+        t_node->result[i++] = '-';
+        while (j-- > 0)
+            t_node->result[i++] = '0';
+        while (*str != 0)
+            t_node->result[i++] = *str++;
     }
 }
