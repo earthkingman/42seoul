@@ -125,3 +125,14 @@ int ft_printf(const char *format, ...)
     free(t_node);
 	return(size);
 }
+
+/*int main()
+{
+	   printf("-->|%-4.*d|<--\n", -4,-135);
+
+	       ft_printf("-->|%-4.*d|<--\n",-4, -135);
+	    printf("-->|%-4.d|<--\n", -135);
+
+		    ft_printf("-->|%-4.d|<--\n", -135);
+	return 0;
+}*/
