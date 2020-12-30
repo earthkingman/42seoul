@@ -50,7 +50,7 @@ void    ft_output_p(t_format *t_node)
     
     p = (unsigned long int)va_arg(t_node->ap, void *);
     h_to_str(p, t_node);
-    exception_null(t_node, p);
+    p_exception_null(t_node, p);
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 3))) == 0)
         return ;
@@ -61,5 +61,13 @@ void    ft_output_p(t_format *t_node)
         p_noflag(t_node, t_node->num); 
 }
 
-
+void   p_exception_null(t_format *t_node, int num)
+{
+    if (t_node->flag[2] == 1 && t_node->prec == 0 && num == 0)
+    {
+        t_node->num[2] = 0;
+        t_node->num[3] = 0;
+        t_node->size = 2;
+    }
+}
 

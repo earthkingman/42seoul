@@ -23,6 +23,7 @@ typedef struct s_format
 
 
 void	exception_null(t_format *t_node, int num);
+void    p_exception_null(t_format *t_node, int num);
 void    negative_d(t_format *t_node, int num);
 void    positive_d(t_format *t_node, int num);
 void    n_judge_max(t_format *t_node);
