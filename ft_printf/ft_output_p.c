@@ -50,6 +50,7 @@ void    ft_output_p(t_format *t_node)
     
     p = (unsigned long int)va_arg(t_node->ap, void *);
     h_to_str(p, t_node);
+    exception_null(t_node, p);
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 3))) == 0)
         return ;
