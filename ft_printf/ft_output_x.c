@@ -9,6 +9,7 @@ void    ft_output_x(t_format *t_node)
         x_to_str(t_node, num);
     else
         X_to_str(t_node, num);
+    exception_null(t_node, num);
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 1))) == 0)
         return ;
