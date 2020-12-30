@@ -74,5 +74,6 @@ void    init_node(t_format *t_node);
 void	check_flag(t_format *t_node);
 void	start_printf(t_format *t_node);
 void	two_flag(t_format *t_node);
+int ft_printf(const char *format, ...);
 
 #endif

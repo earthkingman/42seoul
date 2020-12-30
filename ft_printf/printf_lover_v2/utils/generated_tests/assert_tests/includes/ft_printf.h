@@ -23,6 +23,7 @@ typedef struct s_format
 
 
 void	exception_null(t_format *t_node, int num);
+void    p_exception_null(t_format *t_node, int num);
 void    negative_d(t_format *t_node, int num);
 void    positive_d(t_format *t_node, int num);
 void    n_judge_max(t_format *t_node);
@@ -73,5 +74,6 @@ void    init_node(t_format *t_node);
 void	check_flag(t_format *t_node);
 void	start_printf(t_format *t_node);
 void	two_flag(t_format *t_node);
+int ft_printf(const char *format, ...);
 
 #endif
