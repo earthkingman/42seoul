@@ -79,13 +79,6 @@ void     x_to_str(t_format *t_node, unsigned int addr)
     long long temp;
     int     len;
     
-    if (addr == 0)
-    {
-        t_node->num[0] = '0';
-        t_node->num[1] = 0;
-        t_node->size = 1;
-        return ;
-    }
     len = 0;
     temp = addr;
     while (addr != 0)
@@ -110,13 +103,6 @@ void     X_to_str(t_format *t_node, unsigned int addr)
     long long temp;
     int     len;
     
-    if (addr == 0)
-    {
-        t_node->num[0] = '0';
-        t_node->num[1] = 0;
-        t_node->size = 1;
-        return ;
-    }
     len = 0;
     temp = addr;
     while (addr != 0)
