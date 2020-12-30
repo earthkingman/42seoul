@@ -12,7 +12,7 @@ void n_noflag(t_format *t_node, char *str)
     {
         str++;
         size = t_node->size;
-        if (t_node->size < t_node->prec)
+        if (t_node->size <= t_node->prec)
             size = t_node->prec + 1;
         while (t_node->wid > size + i)
             t_node->result[i++] = ' ';
