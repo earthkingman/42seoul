@@ -99,7 +99,9 @@ void	check_prec(t_format *t_node)
 		t_node->flag[2] = 1;
 		t_node->str++;
 		t_node->prec = check_star(t_node);
-		if (t_node->prec < 0)
+		if (t_node->prec > 0)
+			return ;
+		else if (t_node->prec < 0)
 		{
 			t_node->flag[2] = 0;
 			t_node->prec = 0;
@@ -115,4 +117,3 @@ void	check_prec(t_format *t_node)
 	else
 		return ;
 }
-
