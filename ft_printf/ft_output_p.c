@@ -9,13 +9,16 @@ void    p_flag_minus(t_format *t_node, char *str)
     j = 0;
     if (str != NULL)
     {
+        str++;
+        str++;
+        t_node->result[i++] = '0';
+        t_node->result[i++] = 'x';
+        while (t_node->prec > t_node->size + i - 3)
+            t_node->result[i++] = '0';
         while (*str != 0)
             t_node->result[i++] = *str++;
-        while (t_node->wid > t_node->size + j)
-        {
+        while (i < t_node->max_size)
             t_node->result[i++] = ' ';
-            j++;
-        } 
     }
 }
 
