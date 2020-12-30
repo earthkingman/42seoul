@@ -28,8 +28,7 @@ void    p_noflag(t_format *t_node, char *str)
     str++;
     str++;
     j = t_node->max_size - t_node->size;
-    if (t_node->flag[2] == 1)
-    {
+
         if (t_node->prec > t_node->size)
             j = t_node->max_size - t_node->prec - 2;
         while (j-- > 0)
@@ -41,16 +40,6 @@ void    p_noflag(t_format *t_node, char *str)
             t_node->result[i++] = '0';
         while (*str != 0)
             t_node->result[i++] = *str++;
-    }
-    else
-    {
-        t_node->result[i++] = '0';
-        t_node->result[i++] = 'x';
-        while (j-- > 0)
-            t_node->result[i++] = '0';
-        while (*str != 0)
-            t_node->result[i++] = *str++;
-    }
 }
 
 void    ft_output_p(t_format *t_node)
