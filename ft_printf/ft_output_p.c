@@ -22,14 +22,27 @@ void    p_flag_minus(t_format *t_node, char *str)
 void    p_noflag(t_format *t_node, char *str)
 {
     int i;
+    int j;
 
     i = 0;
+    j = 0;
     if (str != NULL)
     {
-        while (t_node->wid > t_node->size + i)
-            t_node->result[i++] = ' ';       
-        while (*str != 0)
+        while (t_node->wid > t_node->size + 2 + i)
+            t_node->result[i++] = ' '; 
+        t_node->result[i++] = '0';
+        t_node->result[i++] = 'x';    
+        if (t_node->flag[2] == 1)
+        {
+            while (t_node->prec > t_node->size + j)
             t_node->result[i++] = *str++;
+            j++;
+        }
+        else
+        {
+            while (*str != 0)
+            t_node->result[i++] = *str++;
+        }
     }
 }
 

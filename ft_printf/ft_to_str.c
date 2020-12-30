@@ -60,7 +60,7 @@ void     h_to_str(long long addr, t_format *t_node)
         addr /= 16;
         len++;
     }
-    len = len == 0 ? 1 : len + 2;
+    len = len == 0 ? 1 : len;
     t_node->size = len;
     addr = temp;
     while (addr != 0)
@@ -68,9 +68,7 @@ void     h_to_str(long long addr, t_format *t_node)
         t_node->num[--len] = g_hex_s[addr % 16];
         addr /= 16;
     }
-    t_node->num[0] = '0';
-    t_node->num[1] = 'x';
-    t_node->num[2] = temp == 0 ? '0' : t_node->num[2];
+    t_node->num[0] = temp == 0 ? '0' : t_node->num[0];
 }
 
 void     x_to_str(t_format *t_node, unsigned int addr)
