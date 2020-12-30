@@ -69,9 +69,15 @@ void	check_wid(t_format *t_node)
 {
 	int answer;
 
-	t_node->wid != check_star(t_node);
-	if (t_node->wid != 0)
+	t_node->wid = check_star(t_node);
+	if (t_node->wid > 0)
 		return ;
+	else if(t_node->wid < 0)
+	{
+		t_node->wid = t_node->wid * -1;
+		t_node->flag[0] = 1;
+		return ;
+	}
 	answer = 0;
 	while (*t_node->str == ' ' || (*t_node->str >= 9 && *t_node->str <= 13))
 		t_node->str++;
