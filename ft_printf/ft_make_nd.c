@@ -55,7 +55,7 @@ void n_flag_zero(t_format *t_node, char *str)
     j = t_node->max_size - t_node->size;
     if (t_node->flag[2] == 1)
     {
-        if (t_node->prec > t_node->size)
+        if (t_node->prec >= t_node->size)
             j = t_node->max_size - t_node->prec - 1;
         while (j-- > 0)
             t_node->result[i++] = ' ';
