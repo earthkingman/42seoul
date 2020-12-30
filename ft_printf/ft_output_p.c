@@ -34,7 +34,7 @@ void    p_noflag(t_format *t_node, char *str)
             t_node->result[i++] = ' '; 
         t_node->result[i++] = '0';
         t_node->result[i++] = 'x';    
-        if (t_node->flag[2] == 1)
+        if (t_node->flag[2] == 1 && t_node->prec == 0)
         {
             while (t_node->prec > t_node->size + j)
             t_node->result[i++] = *str++;
