@@ -69,8 +69,8 @@ void	check_wid(t_format *t_node)
 {
 	int answer;
 
-	t_node->wid = check_star(t_node);
-	if (t_node->wid > 0)
+	t_node->wid != check_star(t_node);
+	if (t_node->wid != 0)
 		return ;
 	answer = 0;
 	while (*t_node->str == ' ' || (*t_node->str >= 9 && *t_node->str <= 13))
@@ -93,7 +93,7 @@ void	check_prec(t_format *t_node)
 		t_node->flag[2] = 1;
 		t_node->str++;
 		t_node->prec = check_star(t_node);
-		if (t_node->prec > 0)
+		if (t_node->prec != 0)
 			return ;
 		while (*t_node->str >= '0' && *t_node->str <= '9')
 		{
@@ -105,3 +105,4 @@ void	check_prec(t_format *t_node)
 	else
 		return ;
 }
+
