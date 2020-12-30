@@ -22,7 +22,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == 0)
 		return ((void*)0);
-	size = pf_strlen(s);
+	size = ft_strlen(s);
 	if (size <= start)
 	{
 		str[0] = 0;

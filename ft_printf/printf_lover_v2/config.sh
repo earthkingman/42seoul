@@ -5,7 +5,7 @@
 # 	example:
 #	PATH_TO_MY_PROJECT="/Users/charmstr/Projects/ft_printf_42cursus"
 
-PATH_TO_MY_PROJECT="../"
+PATH_TO_MY_PROJECT="/Users/ji-park/42seoul/ft_printf"
 
 
 cd $PATH_TO_MY_PROJECT
