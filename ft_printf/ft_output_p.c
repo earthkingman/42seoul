@@ -21,27 +21,36 @@ void    p_flag_minus(t_format *t_node, char *str)
 
 void    p_noflag(t_format *t_node, char *str)
 {
-	int i;
-	int j;
-	int size;
+    int i;
+    int j;
 
-	i = 0;
-	j = 0;
-	if (str != NULL)
-	{
-		size = t_node->size;
-		if (t_node->size < t_node->prec)
-			size = t_node->prec;
-		while (t_node->wid > size + i)
-			t_node->result[i++] = ' ';
-		while (t_node->size + j < t_node->prec)
-		{
-			t_node->result[i++] = '0';
-			j++;
-		}
-		while (*str != 0)
-			t_node->result[i++] = *str++;
-	}
+    i = 0;
+    str++;
+    str++;
+    j = t_node->max_size - t_node->size;
+    if (t_node->flag[2] == 1)
+    {
+        if (t_node->prec > t_node->size)
+            j = t_node->max_size - t_node->prec - 2;
+        while (j-- > 0)
+            t_node->result[i++] = ' ';
+        t_node->result[i++] = '0';
+        t_node->result[i++] = 'x';
+        j = t_node->prec - t_node->size + 2;
+        while (j-- > 0)
+            t_node->result[i++] = '0';
+        while (*str != 0)
+            t_node->result[i++] = *str++;
+    }
+    else
+    {
+        t_node->result[i++] = '0';
+        t_node->result[i++] = 'x';
+        while (j-- > 0)
+            t_node->result[i++] = '0';
+        while (*str != 0)
+            t_node->result[i++] = *str++;
+    }
 }
 
 void    ft_output_p(t_format *t_node)
