@@ -106,14 +106,17 @@ void    ft_putstr(t_format *t_node)
             write(1, &t_node->result[i], 1);
             i++;
         }
-       return ;
+        t_node->nums += t_node->max_size;
+        return ;
     }
     while(t_node->result[i] != 0)
     {
         write(1, &t_node->result[i], 1);
         i++;
     }
+    t_node->nums += pf_strlen(t_node->result);
 }
+
 
 int ft_printf(const char *format, ...)
 {

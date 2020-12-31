@@ -16,7 +16,6 @@ void	start_printf(t_format *t_node)
 			two_flag(t_node);
 			ft_output(t_node);
 			ft_putstr(t_node);
-			t_node->nums += pf_strlen(t_node->result);
 			init_node(t_node);
 		}
         else
