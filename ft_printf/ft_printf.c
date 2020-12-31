@@ -99,6 +99,11 @@ void    ft_putstr(t_format *t_node)
     int i;
 
     i = 0;
+    if (t_node->spec == 'c')
+    {
+       write(1, &t_node->result, t_node->max_size); 
+       return ;
+    }
     while(t_node->result[i] != 0)
     {
         write(1, &t_node->result[i], 1);
