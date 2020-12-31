@@ -23,7 +23,6 @@ void    c_noflag(t_format *t_node, char c)
 void    c_flag_minus(t_format *t_node, char c)
 {
     int i;
-    int j;
 
     i = 0;
     t_node->result[i++] = c; 
