@@ -9,7 +9,7 @@ void    ft_output_c(t_format *t_node)
     str[0] = c;
     str[1] = 0;
     if (c == 0)
-        str[0] = ' ';
+        str[0] = '\0';
     t_node->size = 1;
     judge_max(t_node);
     if ((t_node->result = (char *)malloc(sizeof(char) * (t_node->max_size + 1))) == 0)
