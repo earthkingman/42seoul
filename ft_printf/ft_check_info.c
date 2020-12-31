@@ -59,9 +59,14 @@ void	check_flag(t_format *t_node)
 			t_node->flag[0] = 1;
 		else if (*t_node->str == '0')
 			t_node->flag[1] = 1;
+		else if (*t_node->str == ' ')
+		{	
+			ft_putchar(*t_node->str);
+			t_node->nums++;
+		}
 		else
 			return ;
-		t_node->str++;
+		t_node->str++;			
 	}
 }
 
