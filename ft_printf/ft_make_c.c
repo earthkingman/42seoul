@@ -7,17 +7,11 @@ void    c_noflag(t_format *t_node, char c)
 
     i = 0;
     size = t_node->size;
-    if (t_node->flag[2] == 1)
-        {
-            if (t_node->prec < t_node->size)
-                size = t_node->prec;
-        }
     while (size + i  < t_node->wid)
     {
         t_node->result[i++] = ' ';
     }
         t_node->result[i++] = c;
-
 }
 
 void    c_flag_minus(t_format *t_node, char c)
