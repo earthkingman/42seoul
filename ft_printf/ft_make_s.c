@@ -29,21 +29,20 @@ void    s_noflag(t_format *t_node, char *str)
 void    s_flag_minus(t_format *t_node, char *str)
 {
     int i;
+    int j;
 
     i = 0;
-    if (str != NULL)
+    j = 0;
+    if (t_node->flag[2] == 1)
     {
-        if (t_node->flag[2] == 1)
-        {
-            while (*str != 0 && i < t_node->prec)
-                t_node->result[i++] = *str++; 
-        }
-        else
-        {
-            while (*str != 0)
-                t_node->result[i++] = *str++;
-        }
-    }    
+        while (j < t_node->size && i < t_node->prec)
+            t_node->result[i++] = str[j++]; 
+    }
+    else
+    {
+        while (j < t_node->size)
+            t_node->result[i++] = str[j++];
+    }
     while (i < t_node->wid)
         t_node->result[i++] = ' ';
 }
