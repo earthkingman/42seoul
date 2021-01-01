@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 01:01:09 by ji-park           #+#    #+#             */
-/*   Updated: 2021/01/02 01:04:40 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/02 01:10:38 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_printf(const char *format, ...)
 {
-	int	size;
+	int			size;
+	t_format	*t_node;
 
-	t_format *t_node;
 	t_node = (t_format*)malloc(sizeof(t_format));
 	va_start(t_node->ap, format);
 	init_firstnode(t_node, (char *)format);
