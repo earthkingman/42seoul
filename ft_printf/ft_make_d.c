@@ -6,13 +6,13 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 21:14:33 by ji-park           #+#    #+#             */
-/*   Updated: 2020/12/27 21:30:46 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/01 23:53:19 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void flag_zero(t_format *t_node, char *str)
+void	flag_zero(t_format *t_node, char *str)
 {
 	int i;
 	int j;
@@ -40,7 +40,7 @@ void flag_zero(t_format *t_node, char *str)
 	}
 }
 
-void flag_minus(t_format *t_node, char *str)
+void	flag_minus(t_format *t_node, char *str)
 {
 	int i;
 
@@ -56,7 +56,7 @@ void flag_minus(t_format *t_node, char *str)
 	}
 }
 
-void noflag(t_format *t_node, char *str)
+void	noflag(t_format *t_node, char *str)
 {
 	int i;
 	int j;
