@@ -82,7 +82,6 @@ void     x_to_str(t_format *t_node, unsigned int addr)
     if (addr == 0)
     {
         t_node->num[0] = '0';
-        t_node->num[1] = 0;
         t_node->size = 1;
         return ;
     }
@@ -101,7 +100,6 @@ void     x_to_str(t_format *t_node, unsigned int addr)
         t_node->num[--len] = g_hex_s[addr % 16];
         addr /= 16;
     }
-    t_node->num[0] = temp == 0 ? '0' : t_node->num[0];
 }
 
 void     X_to_str(t_format *t_node, unsigned int addr)
@@ -113,7 +111,6 @@ void     X_to_str(t_format *t_node, unsigned int addr)
     if (addr == 0)
     {
         t_node->num[0] = '0';
-        t_node->num[1] = 0;
         t_node->size = 1;
         return ;
     }
@@ -132,5 +129,4 @@ void     X_to_str(t_format *t_node, unsigned int addr)
         t_node->num[--len] = g_hex_s[addr % 16];
         addr /= 16;
     }
-    t_node->num[0] = temp == 0 ? '0' : t_node->num[0];
 }
