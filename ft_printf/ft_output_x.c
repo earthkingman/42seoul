@@ -19,9 +19,9 @@ void	ft_output_x(t_format *t_node)
 
 	num = (unsigned int)va_arg(t_node->ap, int);
 	if (t_node->spec == 'x')
-		x_to_str(t_node, num);
+		sx_to_str(t_node, num);
 	else
-		X_to_str(t_node, num);
+		bx_to_str(t_node, num);
 	exception_null(t_node, num);
 	judge_max(t_node);
 	i = t_node->max_size;

@@ -73,7 +73,7 @@ void     h_to_str(long long addr, t_format *t_node)
     t_node->num[2] = temp == 0 ? '0' : t_node->num[2];
 }
 
-void     x_to_str(t_format *t_node, unsigned int addr)
+void     sx_to_str(t_format *t_node, unsigned int addr)
 {
     char    g_hex_s[17] = "0123456789abcdef";
     long long temp;
@@ -102,7 +102,7 @@ void     x_to_str(t_format *t_node, unsigned int addr)
     }
 }
 
-void     X_to_str(t_format *t_node, unsigned int addr)
+void     bx_to_str(t_format *t_node, unsigned int addr)
 {
     char    g_hex_s[17] = "0123456789ABCDEF";
     long long temp;
