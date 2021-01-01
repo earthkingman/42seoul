@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 02:01:28 by ji-park           #+#    #+#             */
-/*   Updated: 2021/01/02 02:04:55 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/02 03:25:21 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	u_to_str(t_format *t_node, unsigned int n)
 
 void	h_to_str(long long addr, t_format *t_node)
 {
-	char		g_hex_s[17] = "0123456789abcdef";
+	char		hex_s[17] = "0123456789abcdef";
 	long long	temp;
-    int			len;
+	int			len;
 
 	len = 0;
 	temp = addr;
@@ -77,7 +77,7 @@ void	h_to_str(long long addr, t_format *t_node)
 	addr = temp;
 	while (addr != 0)
 	{
-		t_node->num[--len] = g_hex_s[addr % 16];
+		t_node->num[--len] = hex_s[addr % 16];
 		addr /= 16;
 	}
 	t_node->num[0] = '0';
@@ -85,38 +85,9 @@ void	h_to_str(long long addr, t_format *t_node)
 	t_node->num[2] = temp == 0 ? '0' : t_node->num[2];
 }
 
-void     sx_to_str(t_format *t_node, unsigned int addr)
+void	sx_to_str(t_format *t_node, unsigned int addr)
 {
-	char    g_hex_s[17] = "0123456789abcdef";
-	long long temp;
-	int     len;
-
-	if (addr == 0)
-	{
-		t_node->num[0] = '0';
-		t_node->size = 1;
-		return ;
-	}
-	len = 0;
-	temp = addr;
-	while (addr != 0)
-	{
-		addr /= 16;
-		len++;
-	}
-	len = len == 0 ? 0 : len;
-	t_node->size = len;
-	addr = temp;
-	while (addr != 0)
-	{
-		t_node->num[--len] = g_hex_s[addr % 16];
-		addr /= 16;
-	}
-}
-
-void	bx_to_str(t_format *t_node, unsigned int addr)
-{
-	char		g_hex_s[17] = "0123456789ABCDEF";
+	char		hex_s[17] = "0123456789abcdef";
 	long long	temp;
 	int			len;
 
@@ -138,7 +109,36 @@ void	bx_to_str(t_format *t_node, unsigned int addr)
 	addr = temp;
 	while (addr != 0)
 	{
-		t_node->num[--len] = g_hex_s[addr % 16];
+		t_node->num[--len] = hex_s[addr % 16];
+		addr /= 16;
+	}
+}
+
+void	bx_to_str(t_format *t_node, unsigned int addr)
+{
+	char		hex_s[17] = "0123456789ABCDEF";
+	long long	temp;
+	int			len;
+
+	if (addr == 0)
+	{
+		t_node->num[0] = '0';
+		t_node->size = 1;
+		return ;
+	}
+	len = 0;
+	temp = addr;
+	while (addr != 0)
+	{
+		addr /= 16;
+		len++;
+	}
+	len = len == 0 ? 0 : len;
+	t_node->size = len;
+	addr = temp;
+	while (addr != 0)
+	{
+		t_node->num[--len] = hex_s[addr % 16];
 		addr /= 16;
 	}
 }
