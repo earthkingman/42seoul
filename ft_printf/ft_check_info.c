@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 19:35:12 by ji-park           #+#    #+#             */
-/*   Updated: 2020/12/27 21:56:46 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/01 10:20:50 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	check_flag(t_format *t_node)
 		else if (*t_node->str == '0')
 			t_node->flag[1] = 1;
 		else if (*t_node->str == ' ')
-		{	
+		{
 			ft_putchar(*t_node->str);
 			t_node->nums++;
 		}
 		else
 			return ;
-		t_node->str++;			
+		t_node->str++;
 	}
 }
 
@@ -77,7 +77,7 @@ void	check_wid(t_format *t_node)
 	t_node->wid = check_star(t_node);
 	if (t_node->wid > 0)
 		return ;
-	else if(t_node->wid < 0)
+	else if (t_node->wid < 0)
 	{
 		t_node->wid = t_node->wid * -1;
 		t_node->flag[0] = 1;
