@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/02 03:43:51 by ji-park           #+#    #+#             */
+/*   Updated: 2021/01/02 03:43:53 by ji-park          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int	pf_strlen(char *str)
+int				pf_strlen(char *str)
 {
 	int i;
 
-    if (str == NULL)
-        return(0);
+	if (str == NULL)
+		return (0);
 	i = 0;
 	while (str[i] != 0)
 		i++;
 	return (i);
 }
 
-void	pf_bzero(void *ptr, size_t size)
+void			pf_bzero(void *ptr, size_t size)
 {
 	int				i;
 	unsigned char	*startptr;
@@ -26,7 +38,7 @@ void	pf_bzero(void *ptr, size_t size)
 	}
 }
 
-void	do_itoa(unsigned int tmp, t_format *t_node, int len)
+void			do_itoa(unsigned int tmp, t_format *t_node, int len)
 {
 	while (tmp > 0)
 	{
@@ -35,9 +47,9 @@ void	do_itoa(unsigned int tmp, t_format *t_node, int len)
 	}
 }
 
-long long	check_size(long long n)
+long long		check_size(long long n)
 {
-	long long			i;
+	long long		i;
 
 	i = 0;
 	if (n < 0)
