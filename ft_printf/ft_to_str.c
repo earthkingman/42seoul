@@ -12,6 +12,9 @@
 
 #include "ft_printf.h"
 
+char		g_hex_s[17] = "0123456789abcdef";
+char		g_hex_b[17] = "0123456789ABCDEF";
+
 void	d_to_str(t_format *t_node, int n)
 {
 	int				len;
@@ -61,7 +64,6 @@ void	u_to_str(t_format *t_node, unsigned int n)
 
 void	h_to_str(long long addr, t_format *t_node)
 {
-	char		hex_s[17] = "0123456789abcdef";
 	long long	temp;
 	int			len;
 
@@ -77,7 +79,7 @@ void	h_to_str(long long addr, t_format *t_node)
 	addr = temp;
 	while (addr != 0)
 	{
-		t_node->num[--len] = hex_s[addr % 16];
+		t_node->num[--len] = g_hex_s[addr % 16];
 		addr /= 16;
 	}
 	t_node->num[0] = '0';
@@ -87,7 +89,6 @@ void	h_to_str(long long addr, t_format *t_node)
 
 void	sx_to_str(t_format *t_node, unsigned int addr)
 {
-	char		hex_s[17] = "0123456789abcdef";
 	long long	temp;
 	int			len;
 
@@ -109,14 +110,13 @@ void	sx_to_str(t_format *t_node, unsigned int addr)
 	addr = temp;
 	while (addr != 0)
 	{
-		t_node->num[--len] = hex_s[addr % 16];
+		t_node->num[--len] = g_hex_s[addr % 16];
 		addr /= 16;
 	}
 }
 
 void	bx_to_str(t_format *t_node, unsigned int addr)
 {
-	char		hex_s[17] = "0123456789ABCDEF";
 	long long	temp;
 	int			len;
 
@@ -138,7 +138,7 @@ void	bx_to_str(t_format *t_node, unsigned int addr)
 	addr = temp;
 	while (addr != 0)
 	{
-		t_node->num[--len] = hex_s[addr % 16];
+		t_node->num[--len] = g_hex_b[addr % 16];
 		addr /= 16;
 	}
 }

@@ -33,6 +33,9 @@ typedef	struct	s_format
 	int			nums;
 }				t_format;
 
+extern	char	g_hex_b[17];	
+extern	char	g_hex_s[17];
+
 void			exception_null(t_format *t_node, int num);
 void			p_exception_null(t_format *t_node, int num);
 void			negative_d(t_format *t_node, int num);
