@@ -48,7 +48,7 @@ void    flag_minus(t_format *t_node, char *str);
 void    noflag(t_format *t_node, char *str);
 int     pf_strlen(char *str);
 void    judge_max(t_format *t_node);
-void    ft_output_X(t_format *t_node);
+void    ft_output_x(t_format *t_node);
 void    ft_output_x(t_format *t_node);
 void    ft_output_u(t_format *t_node);
 void    ft_output_p(t_format *t_node);
