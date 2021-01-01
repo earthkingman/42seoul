@@ -40,6 +40,7 @@ void    c_noflag(t_format *t_node, char c);
 void    c_flag_zero(t_format *t_node, char c);
 void    c_flag_minus(t_format *t_node, char c);
 void    n_flag_zero(t_format *t_node, char *str);
+void    n_flag_zero_2(t_format *t_node, char *str);
 void    n_flag_minus(t_format *t_node, char *str);
 void    n_noflag(t_format *t_node, char *str);
 void    flag_zero(t_format *t_node, char *str);
