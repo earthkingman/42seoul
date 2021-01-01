@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 21:07:25 by ji-park           #+#    #+#             */
-/*   Updated: 2020/12/28 03:36:01 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/01 10:21:50 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,4 @@ void	init_node(t_format *t_node)
 	(t_node)->size = 0;
 	free((t_node)->result);
 	(t_node)->result = 0;
-
 }
