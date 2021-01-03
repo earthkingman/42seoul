@@ -15,8 +15,9 @@
 void	ft_output_percent(t_format *t_node)
 {
 	int	i;
+	char a;
 
-	t_node->num[0] = '%';
+	a = '%';
 	t_node->size = 1;
 	judge_max(t_node);
 	i = t_node->max_size;
@@ -25,14 +26,14 @@ void	ft_output_percent(t_format *t_node)
 	pf_bzero(t_node->result, t_node->max_size + 1);
 	if (t_node->flag[0] == 1)
 	{
-		percent_flag_minus(t_node, t_node->num);
+		c_flag_minus(t_node, a);
 	}
 	else if (t_node->flag[1] == 1)
 	{
-		percent_flag_zero(t_node, t_node->num);
+		c_flag_zero(t_node, a);
 	}
 	else
 	{
-		percent_noflag(t_node, t_node->num);
+		c_noflag(t_node, a);
 	}
 }
