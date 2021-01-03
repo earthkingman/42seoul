@@ -30,10 +30,29 @@ void	ft_output_percent(t_format *t_node)
 	}
 	else if (t_node->flag[1] == 1)
 	{
-		c_flag_zero(t_node, a);
+		percent_flag_zero(t_node, a);
 	}
 	else
 	{
 		c_noflag(t_node, a);
 	}
+}
+
+void	percent_flag_zero(t_format *t_node, char c)
+{
+		int i;
+	int size;
+
+	i = 0;
+	size = t_node->size;
+	if (t_node->flag[2] == 1)
+	{
+		if (t_node->prec < t_node->size)
+			size = t_node->prec;
+	}
+	while (size + i < t_node->wid + 1)
+	{
+		t_node->result[i++] = '0';
+	}
+	t_node->result[i++] = c;
 }
