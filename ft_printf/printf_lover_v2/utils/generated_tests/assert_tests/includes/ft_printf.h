@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 01:18:28 by ji-park           #+#    #+#             */
-/*   Updated: 2021/01/02 01:18:40 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/02 03:45:02 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef	struct	s_format
 	int			nums;
 }				t_format;
 
-extern	char	g_hex_b[17];	
+extern	char	g_hex_b[17];
 extern	char	g_hex_s[17];
 
 void			exception_null(t_format *t_node, int num);
