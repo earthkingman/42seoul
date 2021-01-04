@@ -47,6 +47,7 @@ void			check_null(t_format *t_node, char **str);
 void			pf_bzero(void *ptr, size_t size);
 void			p_flag_minus(t_format *t_node, char *str);
 void			p_noflag(t_format *t_node, char *str);
+void			percent_flag_zero(t_format *t_node, char c);
 void			s_noflag(t_format *t_node, char *str);
 void			s_flag_zero(t_format *t_node, char *str);
 void			s_flag_minus(t_format *t_node, char *str);

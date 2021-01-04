@@ -6,7 +6,7 @@
 /*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 00:50:41 by ji-park           #+#    #+#             */
-/*   Updated: 2021/01/02 00:52:24 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/01/03 17:30:13 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_output_percent(t_format *t_node)
 {
-	int	i;
-	char a;
+	int		i;
+	char	a;
 
 	a = '%';
 	t_node->size = 1;
@@ -40,7 +40,7 @@ void	ft_output_percent(t_format *t_node)
 
 void	percent_flag_zero(t_format *t_node, char c)
 {
-		int i;
+	int i;
 	int size;
 
 	i = 0;
@@ -48,9 +48,9 @@ void	percent_flag_zero(t_format *t_node, char c)
 	if (t_node->flag[2] == 1)
 	{
 		if (t_node->prec < t_node->size)
-			size = t_node->prec;
+			size = t_node->prec + 1;
 	}
-	while (size + i < t_node->wid + 1)
+	while (size + i < t_node->wid)
 	{
 		t_node->result[i++] = '0';
 	}
