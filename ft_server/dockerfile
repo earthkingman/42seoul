@@ -1,0 +1,17 @@
+FROM debian:buster
+MAINTAINER ji-park "qkrskdjf@naver.com"
+
+EXPOSE 80 433
+
+COPY    ./srcs/default ./
+COPY    ./srcs/run.sh ./
+COPY    ./srcs/DB.sql ./
+COPY    ./srcs/wp-config.php ./
+COPY    ./srcs/config.inc.php ./
+
+RUN apt-get update && apt-get upgrade
+RUN apt-get install -y openssl wget nginx vim php7.3-fpm mariadb-server php-mysql php-mbstring
+
+
+CMD bash run.sh
+
