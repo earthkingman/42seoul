@@ -4,6 +4,7 @@
 chmod 775 /run.sh
 chown -R www-data:www-data /var/www/
 chmod -R 755 /var/www/
+chmod 705 /config.inc.php
 
 # SSL 개인키 및 인증서 생성
 openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Gam/CN=localhost" -keyout localhost.dev.key -out localhost.dev.crt
@@ -35,3 +36,5 @@ cp -rp ./config.inc.php /var/www/html/phpmyadmin/
 
 service nginx start
 service php7.3-fpm start
+
+bash

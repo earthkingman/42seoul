@@ -1,7 +1,15 @@
 FROM debian:buster
-MAINTAINER ji-park "qkrskdjf@naver.com"
+LABEL maintainer="ji-park@student.42seoul.kr"
 
-EXPOSE 80 433
+RUN apt-get update && apt-get install -y \
+    openssl \ 
+    wget \
+    nginx \ 
+    vim \
+    php7.3-fpm \
+    mariadb-server \
+    php-mysql \
+    php-mbstring
 
 COPY    ./srcs/default ./
 COPY    ./srcs/run.sh ./
@@ -9,9 +17,7 @@ COPY    ./srcs/DB.sql ./
 COPY    ./srcs/wp-config.php ./
 COPY    ./srcs/config.inc.php ./
 
-RUN apt-get update && apt-get upgrade
-RUN apt-get install -y openssl wget nginx vim php7.3-fpm mariadb-server php-mysql php-mbstring
-
+EXPOSE 80 433
 
 CMD bash run.sh
 
