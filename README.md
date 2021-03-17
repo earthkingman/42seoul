@@ -12,4 +12,4 @@
 | 1      | [ft_printf](https://github.com/earthkingman/42seoul/tree/main/ft_printf) | C          | `recursive Make`, `directory convension`, `variadic argument`, `IEEE754 binary64`, `UTF-8 encoding(unicode)` | ✅ 100/100 | 2020-12-01 ~ 2021-02-07 |
 | 1      | netwhat                                                      | Network    | `network` `IP`   `network layers `  `DHCP`                   | ✅ 100/100 | 2021-02-01 ~ 2021-02-07 |
 | 2      | Cub3D                                                        | C          | `ray-casting` `parsing file`                                 |           | not registered          |
-| 2      | ft_server                                                    | Dockerfile | `docker` `container` `ssl` `http`                            | ✅ 100/100 | 2021-03-01 ~ 2021-03-07 |
+| 2      | [ft_server](https://github.com/earthkingman/42seoul/tree/main/ft_server)                                                   | Dockerfile | `docker` `container` `ssl` `http`                            | ✅ 100/100 | 2021-03-01 ~ 2021-03-07 |
