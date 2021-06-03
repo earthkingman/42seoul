@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void ra(t_list **a)
+void ra(t_node **a)
 {
-    t_list *top;
-    t_list *bottom;
+    t_node *top;
+    t_node *bottom;
 
     top = *a;
     *a = (*a)->next;
@@ -15,10 +15,10 @@ void ra(t_list **a)
     write(1, "ra\n", 3);
 }
 
-void rb(t_list **b)
+void rb(t_node **b)
 {
-    t_list *top;
-    t_list *bottom;
+    t_node *top;
+    t_node *bottom;
 
     top = *b;
     *b = (*b)->next;
@@ -30,11 +30,11 @@ void rb(t_list **b)
     write(1, "ra\n", 3);
 }
 
-void rra(t_list **a)
+void rra(t_node **a)
 {
-    t_list *top;
-    t_list *pre_bottom;
-    t_list *bottom;
+    t_node *top;
+    t_node *pre_bottom;
+    t_node *bottom;
 
     top = *a;
     bottom = *a;
@@ -48,11 +48,11 @@ void rra(t_list **a)
     write(1, "rra\n", 3);
 }
 
-void rrb(t_list **b)
+void rrb(t_node **b)
 {
-    t_list *top;
-    t_list *pre_bottom;
-    t_list *bottom;
+    t_node *top;
+    t_node *pre_bottom;
+    t_node *bottom;
 
     top = *b;
     bottom = *b;
@@ -66,7 +66,7 @@ void rrb(t_list **b)
     write(1, "rrb\n", 3);
 }
 
-void rr(t_list **a, t_list **b)
+void rr(t_node **a, t_node **b)
 {
     ra(a);
     rb(b);

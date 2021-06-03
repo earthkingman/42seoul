@@ -2,12 +2,15 @@
 #define PUSH_SWAP_H
 #include <unistd.h>
 #include <stdlib.h>
+#include "libft.h"
 
-typedef struct s_list
+typedef struct s_node       t_node;
+
+struct s_node
 {
     int value;
-    struct s_list *next;
-}             t_list;
+    t_node *next;
+};
 
 typedef struct s_record
 {
@@ -21,9 +24,27 @@ typedef struct s_record
     int rrb_num;
     int a_now_num;
     int b_now_num;
-    t_list *a_info;
-    t_list *b_info;
+    t_node *check_overlap;
+    t_node *a_info;
+    t_node *b_info;
 }             t_record;
 
+void sa(t_node **a);
+void sb(t_node **b);
+void pa(t_node **a, t_node **b);
+void pb(t_node **a, t_node **b);
+void ra(t_node **a);
+void rb(t_node **b);
+void rra(t_node **a);
+void rrb(t_node **b);
+void rr(t_node **a, t_node **b);
+long integer_Conversion(char *argv);
+int duplicateCheck(t_record *r, t_node **a, int value);
+void add_Node(t_record *r, t_node **a, int value);
+void fill_stack(t_record *r, t_node **a_stack);
+void set_record(t_record *r, int argc, char **argv);
+int isItSorted(t_node **a);
+void sort_three(t_record *r, t_node **a);
+void swap_sort(t_record *r, t_node **a, t_node **b);
 
 #endif

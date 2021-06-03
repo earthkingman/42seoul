@@ -6,6 +6,7 @@ long integer_Conversion(char *argv)
     int i;
     long number;
 
+    minus = 1;
     i = 0;
     number = 0;
     if (argv[i] == '+')
@@ -26,12 +27,12 @@ long integer_Conversion(char *argv)
     return number;
 }
 
-int duplicateCheck(t_list **a, int value)
+int duplicateCheck(t_record *r, t_node **a, int value)
 {
-    t_list *temp;
+    t_node *temp;
 
     temp = *a;
-    while (temp->next != 0)
+    while (temp != r->check_overlap)
     {
         if (value == temp->value)
             return 1;
@@ -40,57 +41,60 @@ int duplicateCheck(t_list **a, int value)
     return 0;
 }
 
-void add_Node(t_record *r, t_list **a, int value)
+void add_Node(t_record *r, t_node **a, int value)
 {
-    t_list *node;
-    t_list *bottom;
+    t_node *node;
+    t_node *bottom;
 
     if (r->max < value)
         r->max = value;
     if (r->min > value)
         r->min = value;
-    node = (t_list *)malloc(sizeof(t_list));
+    node = (t_node *)malloc(sizeof(t_node));
     node->value = value;
     node->next = 0;
     bottom = *a;
     if (*a == 0)
     {
         *a = node;
+        r->check_overlap = node;
         return;
     }
     while (bottom->next != 0)
         bottom = bottom->next;
     bottom->next = node;
+    r->check_overlap = node;
 }
 
-void fill_stack(t_record *r, t_list **a_stack)
+void fill_stack(t_record *r, t_node **a_stack)
 {
     int i;
     int j;
     char **str;
     int number;
-    t_list *temp;
+    t_node *temp;
 
-    i = 0;
+    i = 1;
     j = 0;
     temp = 0;
-    while (i < r->argc)
+    while (i <= r->argc)
     {
         str = ft_split(r->argv[i], ' ');
         if (str == 0)
-            return NULL;
+            return ;
         while (str[j])
         {
             number = integer_Conversion(str[j]);
-            if (duplicateCheck(a_stack, number) == 1)
-                return NULL;
             add_Node(r, a_stack, number);
+            if (duplicateCheck(r, a_stack, number) == 1)
+                return ;
             j++;
         }
+        r->count = j;
         //split free 함수 들어가야함
         i++;
     }
-    r->count = j;
+    
 }
 
 void set_record(t_record *r, int argc, char **argv)
@@ -106,30 +110,30 @@ void set_record(t_record *r, int argc, char **argv)
     r->b_now_num = 0;
 }
 
-void print_error(t_list **a, t_list **b, char **s)
-{
-    int i;
+// void print_error(t_node **a, t_node **b, char **s)
+// {
+//     int i;
 
-    if (a != 0)
-        free_stack(a);
-    if (b != 0)
-        free_stack(b);
-    if (s != 0)
-    {
-        i = -1;
-        while (s[++i] != 0)
-            free(s[i]);
-        free(s[i]);
-        free(s);
-    }
-    write(2, "Error\n", 6);
-    exit(0);
-}
+//     if (a != 0)
+//         free_stack(a);
+//     if (b != 0)
+//         free_stack(b);
+//     if (s != 0)
+//     {
+//         i = -1;
+//         while (s[++i] != 0)
+//             free(s[i]);
+//         free(s[i]);
+//         free(s);
+//     }
+//     write(2, "Error\n", 6);
+//     exit(0);
+// }
 
-int isItSorted(t_list **a)
+int isItSorted(t_node **a)
 {
     int before;
-    t_list *temp;
+    t_node *temp;
 
     temp = *a;
     before = temp->value;
@@ -145,10 +149,10 @@ int isItSorted(t_list **a)
     return 1;
 }
 
-void sort_three(t_record *r, t_list **a)
+void sort_three(t_record *r, t_node **a)
 {
     int		before;
-	t_list *p;
+	t_node *p;
 
 	p = *a;
 	before = p->value;
@@ -156,24 +160,27 @@ void sort_three(t_record *r, t_list **a)
 	if ((before == r->min && p->value == r->max) ||
 	(before == r->max && p->value != r->min) ||
 	(before != r->max && p->value == r->min))
-		sa(a, 0, 0);
+		sa(a);
 	p = *a;
 	before = p->value;
 	p = p->next;
 	if (before == r->max && p->value == r->min)
-		ra(a, 0, 0);
+		ra(a);
 	else if (before != r->min && p->value == r->max)
-		rra(a, 0, 0);
+		rra(a);
 }
 
-void sort_many(t_record *r, t_list **a, t_list **b)
-{
-    r->a_now_num = r->argc;
-    if ((isItSorted))
-}
+// void sort_many(t_record *r, t_node **a, t_node **b)
+// {
+//     r->a_now_num = r->argc;
+//     if ((isItSorted))
+// }
 
-void swap_sort(t_record *r, t_list **a, t_list **b)
+void swap_sort(t_record *r, t_node **a, t_node **b)
 {
+    t_node *temp;
+
+    temp = *b;
     if (r->count == 1 || (isItSorted(a)) == 1)
         return ;
     else if (r->count == 2)
@@ -185,19 +192,19 @@ void swap_sort(t_record *r, t_list **a, t_list **b)
     }
     else if (r->count == 3)
         sort_three(r, a);
-    else
-        sort_many(r, a, b);
+    // else
+    //     sort_many(r, a, b);
 }
 
 int main(int argc, char **argv)
 {
-    t_list *a_stack;
-    t_list *b_stack;
+    t_node *a_stack;
+    t_node *b_stack;
     t_record r;
 
     a_stack = 0;
     b_stack = 0;
-    if (argc > 2)
+    if (argc > 1)
     {
         set_record(&r, argc, argv);
         fill_stack(&r, &a_stack);

@@ -1,10 +1,9 @@
 #include "push_swap.h"
 
-void sa(t_list **a)
+void sa(t_node **a)
 {
-    t_list *p;
-    t_list *top;
-    t_list *second;
+    t_node *top;
+    t_node *second;
 
     top = *a;
     second = (*a)->next;
@@ -14,11 +13,10 @@ void sa(t_list **a)
     write(1, "sa\n", 3);
 }
 
-void sb(t_list **b)
+void sb(t_node **b)
 {
-    t_list *p;
-    t_list *top;
-    t_list *second;
+    t_node *top;
+    t_node *second;
 
     top = *b;
     second = (*b)->next;
@@ -28,9 +26,9 @@ void sb(t_list **b)
     write(1, "sb\n", 3);
 }
 
-void pa(t_list **a, t_list **b)
+void pa(t_node **a, t_node **b)
 {
-    t_list *top_a;
+    t_node *top_a;
 
     top_a = *a;
     *a = top_a->next;
@@ -39,9 +37,9 @@ void pa(t_list **a, t_list **b)
     write(1, "pa\n", 3);
 }
 
-void pb(t_list **a, t_list **b)
+void pb(t_node **a, t_node **b)
 {
-    t_list *top_b;
+    t_node *top_b;
 
     top_b = *b;
     *b = top_b->next;
