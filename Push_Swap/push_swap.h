@@ -46,5 +46,16 @@ void set_record(t_record *r, int argc, char **argv);
 int isItSorted(t_node **a);
 void sort_three(t_record *r, t_node **a);
 void swap_sort(t_record *r, t_node **a, t_node **b);
+long integer_Conversion(char *argv);
+int get_mid_value(t_node **node, int len);
+void moveA(t_record *r, t_node **a, t_node **b, int mid);
+void recordA(t_record *r);
+void recordB(t_record *r);
+void	sort_fixA(t_record *r, t_node **a);
+void sort_many(t_record *r, t_node **a, t_node **b);
+void divide_moveA(t_record *r, t_node **a, t_node **b);
+void divide_moveB(t_record *r, t_node **a, t_node **b);
+int		arrange_descending(t_record *r, t_node **a, t_node **b);
+int		is_descending(t_record *r, t_node **a);
 
 #endif

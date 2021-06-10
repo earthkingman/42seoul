@@ -192,8 +192,215 @@ void swap_sort(t_record *r, t_node **a, t_node **b)
     }
     else if (r->count == 3)
         sort_three(r, a);
-    // else
-    //     sort_many(r, a, b);
+    else
+        sort_many(r, a, b);
+}
+
+int get_mid_value(t_node **node, int len)
+{
+    t_node *temp;
+    int max;
+    int min;
+
+    max = 0;
+    min = 0;
+    temp = *node;
+    while (len > 0)
+    {
+        if (temp->value < max)
+            max = temp->value;
+        if (temp->value > min)
+            min = temp->value;
+        temp = temp->next;
+        len--;
+    }
+    return (max + min) / 2;
+}
+
+void moveA(t_record *r, t_node **a, t_node **b, int mid)
+{
+    t_node *temp;
+
+    while (r->a_now_num > 0)
+    {
+        temp = *a;
+        if (mid <= (*a)->value)
+        {
+            pb(a,b);
+            r->pa_num++;
+            r->b_now_num++;
+        }
+        else
+        {
+            ra(a);
+            r->rra_num++;
+        }
+        r->a_now_num--;
+    }
+}
+
+void	moveB(t_record *r, t_node **a, t_node **b, int mid)
+{
+	t_node *temp;
+
+	while (r->b_now_num > 0)
+	{
+		temp = *b;
+		if (temp->value <= mid)
+		{
+			pa(a, b);
+			r->pa_num--;
+			r->a_now_num++;
+		}
+		else
+		{
+			rb(b);
+			r->rrb_num++;
+		}
+		r->b_now_num--;
+	}
+}
+
+void recordA(t_record *r)
+{
+    t_node *t;
+
+	t = (t_node*)malloc(sizeof(t_node) * 1);
+	t->value = r->rra_num;
+	t->next =  r->a_info;
+	r->a_info = t;
+}
+
+void recordB(t_record *r)
+{
+    t_node *t;
+
+	t = (t_node*)malloc(sizeof(t_node) * 1);
+	t->value = r->rrb_num;
+	t->next = r->b_info;
+	r->b_info = t;
+}
+
+void	sort_fixA(t_record *r, t_node **a)
+{
+	t_node *p;
+
+	p = r->b_info;
+	if (p != 0)
+	{
+		r->b_now_num = r->b_info->value;
+		r->b_info = r->b_info->next;
+	}
+	free(p);
+	if (r->a_now_num == 1)
+	{
+		ra(a);
+		r->a_now_num = 0;
+		return ;
+	}
+	p = *a;
+	if (p->value > (p->next)->value)
+		sa(a);
+	ra(a);
+	ra(a);
+	r->a_now_num = 0;
+}
+
+void divide_moveA(t_record *r, t_node **a, t_node **b)
+{
+    int mid;
+
+    mid = 0;
+    if (r->a_now_num < 3)
+    {
+        sort_fixA(r, a);
+		return ; 
+    }
+    if (r->a_now_num == r->argc)
+        mid = (r->max + r->min) / 2;
+    else
+        get_mid_value(a, r->a_now_num);
+    moveA(r,a,b,mid);
+    recordA(r);
+    while (r->rra_num > 0 && (r->a_info->next != 0 || (*a)->value == r->min))
+    {
+        rra(a);
+        r->rra_num--;
+    }
+    r->rra_num = 0;
+}
+
+void divide_moveB(t_record *r, t_node **a, t_node **b)
+{
+    int mid;
+
+    mid = 0;
+    if (r->b_now_num < 3)
+    {
+        sort_fixA(r, a);
+		return ; 
+    }
+    get_mid_value(a, r->a_now_num);
+    moveB(r,a,b,mid);
+    recordB(r);
+    while (r->rrb_num > 0 && (r->b_info->next != 0))
+    {
+        rrb(b);
+        r->rrb_num--;
+    }
+    r->rrb_num = 0;
+}
+
+int		arrange_descending(t_record *r, t_node **a, t_node **b) //탑에서 오름차순으로 변경
+{
+	int i;
+
+	i = r->argc;
+	pb(a, b);
+	while (--i > 0)
+	{
+		pb(a, b);
+		rb(b);
+	}
+	i = r->argc;
+	while (i-- > 0)
+		pa(a, b);
+	return (1);
+}
+
+int		is_descending(t_record *r, t_node **a) //탑에서 내림차순으로 되어있는지 확인
+{
+	int		before;
+	t_node *p;
+
+	p = *a;
+	if (p->value != r->max)
+		return (0);
+	before = p->value;
+	p = p->next;
+	while (p != 0)
+	{
+		if (before < p->value)
+			return (0);
+		before = p->value;
+		p = p->next;
+	}
+	return (1);
+}
+
+void sort_many(t_record *r, t_node **a, t_node **b)
+{
+    r->a_now_num = r->argc;
+    if (isItSorted(a) == 1)
+        return ;
+    if ((is_descending(r, a)) == 1 && (arrange_descending(r, a, b)) == 1)
+		return ;
+    while (r->a_now_num == 0)
+    {
+        divide_moveA(r, a, b);
+        if (r->pa_num != 0)
+            divide_moveB(r, a, b);
+    }
 }
 
 int main(int argc, char **argv)
