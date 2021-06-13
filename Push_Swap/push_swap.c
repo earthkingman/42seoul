@@ -94,7 +94,6 @@ void fill_stack(t_record *r, t_node **a_stack)
         //split free 함수 들어가야함
         i++;
     }
-    
 }
 
 void set_record(t_record *r, int argc, char **argv)
@@ -202,14 +201,14 @@ int get_mid_value(t_node **node, int len)
     int max;
     int min;
 
-    max = 0;
-    min = 0;
     temp = *node;
+    max = temp->value;
+    max = temp->value;
     while (len > 0)
     {
-        if (temp->value < max)
+        if (temp->value > max)
             max = temp->value;
-        if (temp->value > min)
+        if (temp->value < min)
             min = temp->value;
         temp = temp->next;
         len--;
@@ -224,7 +223,7 @@ void moveA(t_record *r, t_node **a, t_node **b, int mid)
     while (r->a_now_num > 0)
     {
         temp = *a;
-        if (mid <= (*a)->value)
+        if (mid >= (*a)->value)
         {
             pb(a,b);
             r->pa_num++;
@@ -306,9 +305,37 @@ void	sort_fixA(t_record *r, t_node **a)
 	r->a_now_num = 0;
 }
 
+void	sort_fixB(t_record *r, t_node **a, t_node **b)
+{
+	t_node *p;
+
+	r->pa_num -= r->b_now_num; //b스택에 남아있는 갯수 -> pa를 해야하는횟수
+	r->a_now_num = r->a_info->value; //rra 해야하는 횟수
+	p = r->a_info;
+	r->a_info = r->a_info->next;
+	free(p);
+	if (r->b_now_num == 1)
+	{
+		pa(a,b);
+		ra(a);
+		r->b_now_num = 0;
+		return ;
+	}
+	p = *b;
+	if (p->value > (p->next)->value)
+		sb(b);
+	pa(a, b);
+	ra(a);
+	pa(a, b);
+	ra(a);
+	r->b_now_num = 0;
+}
+
+
 void divide_moveA(t_record *r, t_node **a, t_node **b)
 {
     int mid;
+    t_node	*p;
 
     mid = 0;
     if (r->a_now_num < 3)
@@ -319,10 +346,11 @@ void divide_moveA(t_record *r, t_node **a, t_node **b)
     if (r->a_now_num == r->argc)
         mid = (r->max + r->min) / 2;
     else
-        get_mid_value(a, r->a_now_num);
+        mid = get_mid_value(a, r->a_now_num);
     moveA(r,a,b,mid);
     recordA(r);
-    while (r->rra_num > 0 && (r->a_info->next != 0 || (*a)->value == r->min))
+    p = *a;
+    while (r->rra_num > 0 && (r->a_info->next != 0 || p->value == r->min))
     {
         rra(a);
         r->rra_num--;
@@ -337,10 +365,10 @@ void divide_moveB(t_record *r, t_node **a, t_node **b)
     mid = 0;
     if (r->b_now_num < 3)
     {
-        sort_fixA(r, a);
+        sort_fixB(r, a, b);
 		return ; 
     }
-    get_mid_value(a, r->a_now_num);
+    mid = get_mid_value(b, r->b_now_num);
     moveB(r,a,b,mid);
     recordB(r);
     while (r->rrb_num > 0 && (r->b_info->next != 0))
@@ -390,18 +418,35 @@ int		is_descending(t_record *r, t_node **a) //탑에서 내림차순으로 되�
 
 void sort_many(t_record *r, t_node **a, t_node **b)
 {
-    r->a_now_num = r->argc;
+    r->a_now_num = r->count;
     if (isItSorted(a) == 1)
         return ;
     if ((is_descending(r, a)) == 1 && (arrange_descending(r, a, b)) == 1)
 		return ;
-    while (r->a_now_num == 0)
+    while (r->a_now_num != 0)
     {
         divide_moveA(r, a, b);
         if (r->pa_num != 0)
             divide_moveB(r, a, b);
     }
 }
+
+void	free_stack(t_node **a)
+{
+	t_node *p;
+	t_node *t;
+
+	if (*a == 0)
+		return ;
+	p = *a;
+	while (p != 0)
+	{
+		t = p->next;
+		free(p);
+		p = t;
+	}
+}
+
 
 int main(int argc, char **argv)
 {
@@ -416,6 +461,7 @@ int main(int argc, char **argv)
         set_record(&r, argc, argv);
         fill_stack(&r, &a_stack);
         swap_sort(&r, &a_stack, &b_stack);
+        free_stack(&a_stack);
     }
     return 0;
 }

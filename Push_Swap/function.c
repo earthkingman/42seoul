@@ -28,22 +28,30 @@ void sb(t_node **b)
 
 void pa(t_node **a, t_node **b)
 {
-    t_node *top_a;
+	t_node *b_top;
+	t_node *a_second;
 
-    top_a = *a;
-    *a = top_a->next;
-    top_a->next = *b;
-    *b = top_a;
-    write(1, "pa\n", 3);
+	if (*b != 0)
+	{
+		b_top = *b;
+		*b = b_top->next != 0 ? b_top->next : 0;
+		a_second = *a;
+		*a = b_top;
+		b_top->next = a_second;
+	}
+	write(1, "pa\n", 3);
 }
 
 void pb(t_node **a, t_node **b)
 {
-    t_node *top_b;
 
-    top_b = *b;
-    *b = top_b->next;
-    top_b->next = *a;
-    *a = top_b;
-    write(1, "pb\n", 3);
+	t_node *a_top;
+	t_node *b_second;
+
+	a_top = *a;
+	*a = a_top->next != 0 ? a_top->next : 0;
+	b_second = *b;
+	*b = a_top;
+	a_top->next = b_second;
+	write(1, "pb\n", 3);
 }
