@@ -2,28 +2,38 @@
 
 void sa(t_node **a)
 {
-    t_node *top;
-    t_node *second;
+	t_node *p; 
+	t_node *top;
+	t_node *second;
 
-    top = *a;
-    second = (*a)->next;
-    top->next = second->next;
-    *a = second;
-    second->next = top;
-    write(1, "sa\n", 3);
+	second = *a;
+	if (second->next != 0) //다음 가리키는 노드가 있을 경우
+	{
+		top = second->next; // 현재 가리키는 노드의 다음 노드를 탑에 넣음
+		p = top->next; // 
+		*a = top; //
+		top->next = second;
+		second->next = p;
+	}
+	write(1, "sa\n", 3);
 }
 
 void sb(t_node **b)
 {
-    t_node *top;
-    t_node *second;
+	t_node *p;
+	t_node *top;
+	t_node *second;
 
-    top = *b;
-    second = (*b)->next;
-    top->next = second->next;
-    *b = second;
-    second->next = top;
-    write(1, "sb\n", 3);
+	second = *b;
+	if (second != 0 && second->next != 0)
+	{
+		top = second->next;
+		p = top->next;
+		*b = top;
+		top->next = second;
+		second->next = p;
+	}
+	write(1, "sb\n", 3);
 }
 
 void pa(t_node **a, t_node **b)

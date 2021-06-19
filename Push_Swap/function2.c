@@ -2,17 +2,22 @@
 
 void ra(t_node **a)
 {
-    t_node *top;
-    t_node *bottom;
+	t_node *top;
+	t_node *second;
+	t_node *bottom;
 
-    top = *a;
-    *a = (*a)->next;
-    bottom = *a;
-    while (bottom->next != 0)
-        bottom = bottom->next;
-    bottom->next = top;
-    top->next = 0;
-    write(1, "ra\n", 3);
+	top = *a;
+	if (top != 0 && top->next != 0)
+	{
+		second = top->next;
+		bottom = top->next;
+		while (bottom->next != 0)
+			bottom = bottom->next;
+		bottom->next = top;
+		top->next = 0;
+		*a = second;
+	}
+	write(1, "ra\n", 3);
 }
 
 void rb(t_node **b)
@@ -50,7 +55,7 @@ void rra(t_node **a)
     bottom->next = top;
     pre_bottom->next = 0;
     *a = bottom;
-    write(1, "rra\n", 3);
+    write(1, "rra\n", 4);
 }
 
 void rrb(t_node **b)
@@ -68,7 +73,7 @@ void rrb(t_node **b)
     bottom->next = top;
     pre_bottom->next = 0;
     *b = bottom;
-    write(1, "rrb\n", 3);
+    write(1, "rrb\n", 4);
 }
 
 void rr(t_node **a, t_node **b)
