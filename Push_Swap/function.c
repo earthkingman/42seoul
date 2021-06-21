@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   function.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/21 19:57:22 by ji-park           #+#    #+#             */
+/*   Updated: 2021/06/21 19:57:23 by ji-park          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sa(t_node **a)
+void	sa(t_node **a)
 {
-	t_node *p; 
-	t_node *top;
-	t_node *second;
+	t_node	*p;
+	t_node	*top;
+	t_node	*second;
 
 	second = *a;
-	if (second->next != 0) //다음 가리키는 노드가 있을 경우
+	if (second->next != 0)
 	{
-		top = second->next; // 현재 가리키는 노드의 다음 노드를 탑에 넣음
-		p = top->next; // 
-		*a = top; //
+		top = second->next;
+		p = top->next;
+		*a = top;
 		top->next = second;
 		second->next = p;
 	}
 	write(1, "sa\n", 3);
 }
 
-void sb(t_node **b)
+void	sb(t_node **b)
 {
 	t_node *p;
 	t_node *top;
@@ -36,7 +48,7 @@ void sb(t_node **b)
 	write(1, "sb\n", 3);
 }
 
-void pa(t_node **a, t_node **b)
+void	pa(t_node **a, t_node **b)
 {
 	t_node *b_top;
 	t_node *a_second;
@@ -52,9 +64,8 @@ void pa(t_node **a, t_node **b)
 	write(1, "pa\n", 3);
 }
 
-void pb(t_node **a, t_node **b)
+void	pb(t_node **a, t_node **b)
 {
-
 	t_node *a_top;
 	t_node *b_second;
 
