@@ -3,106 +3,120 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 21:28:51 by ji-park           #+#    #+#             */
-/*   Updated: 2020/10/21 18:59:33 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 15:39:23 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	get_num(const char *str, char c)
+static int	ft_str_count(char const *s, char c)
 {
-	size_t	i;
-	size_t	num;
+	int	i;
+	int	count;
 
 	i = 0;
-	num = 0;
-	while (str[i] != 0)
+	count = 0;
+	while (s[i])
 	{
-		if (str[i] != c && str[i] != 0)
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
 		{
-			num++;
-			while (str[i] != c && str[i] != 0)
+			count++;
+			while (s[i] && s[i] != c)
 				i++;
 		}
-		else if (str[i] != 0)
-			i++;
 	}
-	return (num);
+	return (count);
 }
 
-static	void	*free_mem(char **allocated_mem, size_t cnt)
+static void	*ft_free(char **s2, int j)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < cnt)
+	while (i <= j)
 	{
-		free(allocated_mem[i]);
+		free(s2[i]);
 		i++;
 	}
-	free(allocated_mem);
+	free(s2);
 	return (NULL);
 }
 
-static	void	ft_strcpy(char *dst, char const *src, int start, int last)
+static char	**ft_chr_count(char **s2, char const *s, char c)
 {
-	int i;
+	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
-	while (start < last)
+	j = -1;
+	while (s[i])
 	{
-		dst[i] = src[start];
-		i++;
-		start++;
-	}
-	dst[i] = 0;
-}
-
-static	void	do_split(char const *s, char c, char **str)
-{
-	size_t	i;
-	size_t	j;
-	size_t	start;
-
-	i = 0;
-	j = 0;
-	while (s[i] != 0)
-	{
-		if (s[i] != c && s[i] != 0)
-		{
-			start = i;
-			while (s[i] != c && s[i] != 0)
-				i++;
-			if ((str[j] = (char *)malloc(sizeof(char) * (i - start + 1))) == 0)
-			{
-				free_mem(str, j);
-				return ;
-			}
-			ft_strcpy(str[j], s, start, i);
-			j++;
-		}
-		else if (s[i] != 0)
+		count = 0;
+		while (s[i] && s[i] == c)
 			i++;
+		if (s[i] && s[i] != c)
+		{
+			j++;
+			while (s[i] && s[i] != c)
+			{
+				count++;
+				i++;
+			}
+			s2[j] = (char *)malloc(sizeof(char) * (count + 1));
+			if (!s2[j])
+				return (ft_free(s2, j - 1));
+		}
+	}
+	return (s2);
+}
+
+static void	ft_strcpy(char **s2, char const *s, char c)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = -1;
+	while (s[i])
+	{
+		k = 0;
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+		{
+			j++;
+			while (s[i] && s[i] != c)
+			{
+				s2[j][k] = s[i];
+				i++;
+				k++;
+			}
+			s2[j][k] = '\0';
+		}
 	}
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	size_t	n;
+	char	**s2;
+	int		count;
 
-	if (s == 0)
-		return (0);
-	n = get_num(s, c);
-	str = (char **)malloc(sizeof(char *) * (n + 1));
-	if (str == 0)
-		return (0);
-	str[n] = 0;
-	if (n == 0)
-		return (str);
-	do_split(s, c, str);
-	return (str);
+	if (!s)
+		return (NULL);
+	count = ft_str_count(s, c);
+	s2 = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!s2)
+		return (NULL);
+	if (ft_chr_count(s2, s, c) == NULL)
+		return (NULL);
+	s2[count] = NULL;
+	ft_strcpy(s2, s, c);
+	return (s2);
 }

@@ -3,63 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:14:18 by ji-park           #+#    #+#             */
-/*   Updated: 2020/10/20 02:43:17 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 15:46:26 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t		ft_len(long long n)
+static char	*ft_convert(int n, char *str, size_t count)
 {
-	size_t			i;
-
-	i = 0;
-	if (n < 0)
-		n = n * -1;
-	else if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-
-static	void		do_itoa(unsigned int tmp, char *str, int len)
-{
-	while (tmp > 0)
-	{
-		str[len--] = (tmp % 10) + 48;
-		tmp = tmp / 10;
-	}
-}
-
-char				*ft_itoa(int n)
-{
-	char			*str;
-	size_t			len;
-	unsigned int	tmp;
-
-	if (n == 0)
-		return (ft_strdup("0"));
-	len = ft_len(n);
 	if (n < 0)
 	{
-		tmp = n * -1;
-		len++;
+		str[0] = '-';
+		count++;
+	}
+	str[count] = '\0';
+	if (n < 0)
+	{
+		while (--count)
+		{
+			str[count] = ((n % -10) * -1) + '0';
+			n = n / 10;
+		}
 	}
 	else
-		tmp = n;
-	if ((str = (char *)malloc(sizeof(char) * (len + 1))) == 0)
-		return (0);
-	str[len] = 0;
-	len--;
+	{
+		while (count--)
+		{
+			str[count] = (n % 10) + '0';
+			n = n / 10;
+		}
+	}
+	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		temp;
+	int		count;
+	int		sign;
+
+	if (n != 0 && !n)
+		return (NULL);
+	sign = 0;
 	if (n < 0)
-		str[0] = '-';
-	do_itoa(tmp, str, len);
+		sign = 1;
+	count = 0;
+	if (n == 0)
+		count = 1;
+	temp = n;
+	while (temp)
+	{
+		temp = temp / 10;
+		count++;
+	}
+	str = (char *)malloc(sizeof(char) * (sign + count + 1));
+	if (!str)
+		return (NULL);
+	str = ft_convert(n, str, count);
 	return (str);
 }

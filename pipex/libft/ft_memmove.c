@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 18:17:09 by ji-park           #+#    #+#             */
-/*   Updated: 2020/10/06 22:37:38 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 15:44:24 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *destination, const void *source, size_t num)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dest;
-	unsigned char	*src;
-	size_t			i;
+	unsigned char		*uc_dst;
+	const unsigned char	*uc_src;
+	size_t				i;
 
-	if (destination == source || num == 0)
-		return (destination);
-	i = 0;
-	dest = (unsigned char *)destination;
-	src = (unsigned char *)source;
-	if (dest < src)
-		while (i < num)
+	if (!dst && !src)
+		return (NULL);
+	uc_dst = (unsigned char *)dst;
+	uc_src = (unsigned char *)src;
+	if (dst <= src)
+	{
+		i = 0;
+		while (i < len)
 		{
-			dest[i] = src[i];
+			uc_dst[i] = uc_src[i];
 			i++;
 		}
+	}
 	else
-		while (i < num)
-		{
-			dest[num - i - 1] = src[num - i - 1];
-			i++;
-		}
-	return (destination);
+		while (len--)
+			uc_dst[len] = uc_src[len];
+	return (dst);
 }
