@@ -6,7 +6,7 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 14:10:31 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 16:14:53 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:29:51 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst,
-				void *(*f)(void *), void (*del)(void *));
+						void *(*f)(void *), void (*del)(void *));
 
 #endif

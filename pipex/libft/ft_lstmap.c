@@ -6,7 +6,7 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 22:34:59 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 16:27:14 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:29:05 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		new = new->next;
 	}
 	return (head);
-	}
+}
