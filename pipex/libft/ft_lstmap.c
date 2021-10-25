@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ji-park <gudor123@nate.com>                +#+  +:+       +#+        */
+/*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 22:34:59 by ji-park           #+#    #+#             */
-/*   Updated: 2020/10/19 22:35:01 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:27:14 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newlst;
-	t_list	*curr;
-	t_list	*temp;
+	t_list	*head;
+	t_list	*new;
 
-	if (lst == 0 || f == 0)
-		return (0);
-	if ((newlst = ft_lstnew(f(lst->content))) == 0)
-		return (0);
-	curr = newlst;
+	if (!lst || !f)
+		return (NULL);
+	head = ft_lstnew(f(lst->content));
+	if (!head)
+		return (NULL);
+	new = head;
 	lst = lst->next;
 	while (lst)
 	{
-		if ((temp = ft_lstnew(f(lst->content))) == 0)
+		new->next = ft_lstnew(f(lst->content));
+		if (!new->next)
 		{
-			ft_lstclear(&newlst, del);
-			return (0);
+			ft_lstclear(&head, del);
+			return (NULL);
 		}
-		curr->next = temp;
-		curr = temp;
 		lst = lst->next;
+		new = new->next;
 	}
-	return (newlst);
-}
+	return (head);
+	}
