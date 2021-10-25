@@ -6,7 +6,7 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 14:10:31 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 16:01:25 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:14:53 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <unistd.h>
 # include <stddef.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 
 int					ft_isalpha(int c);
 int					ft_isascii(int a);
@@ -68,6 +68,6 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst,
-								void *(*f)(void *), void (*del)(void *));
+				void *(*f)(void *), void (*del)(void *));
 
 #endif
