@@ -6,16 +6,16 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:55:17 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 17:50:05 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/11/18 00:13:33 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	parse_file(int argc, char **argv)
+int parse_file(int argc, char **argv)
 {
-	int	infile;
-	int	outfile;
+	int infile;
+	int outfile;
 
 	if (access(argv[1], F_OK | R_OK) == -1)
 		error_msg("exist or read");
@@ -29,18 +29,18 @@ int	parse_file(int argc, char **argv)
 	return (outfile);
 }
 
-void	exe_cmd(char *argv, char **envp)
+void exe_cmd(char *argv, char **envp)
 {
-	int		fd[2];
-	pid_t	pid;
-	char	**cmd;
+	int fd[2];
+	pid_t pid;
+	char **cmd;
 
 	if (pipe(fd) == -1)
 		error_msg("pipe");
 	pid = fork();
 	if (pid == 0)
 	{
-		close(fd[0]); 
+		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
 		cmd = ft_split(argv, ' ');
 		if (execve(find_path(envp, cmd[0]), cmd, envp) == -1)
@@ -56,10 +56,10 @@ void	exe_cmd(char *argv, char **envp)
 		error_msg("fork");
 }
 
-int	main(int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
-	int		outfile;
-	char	**cmd;
+	int outfile;
+	char **cmd;
 
 	if (argc == 5)
 	{
