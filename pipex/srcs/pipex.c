@@ -6,7 +6,7 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 10:55:17 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 10:56:11 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 17:50:05 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	exe_cmd(char *argv, char **envp)
 	pid = fork();
 	if (pid == 0)
 	{
-		close(fd[0]);
+		close(fd[0]); 
 		dup2(fd[1], STDOUT_FILENO);
 		cmd = ft_split(argv, ' ');
 		if (execve(find_path(envp, cmd[0]), cmd, envp) == -1)

@@ -6,7 +6,7 @@
 /*   By: ji-park <ji-park@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 14:10:31 by ji-park           #+#    #+#             */
-/*   Updated: 2021/10/25 16:14:53 by ji-park          ###   ########.fr       */
+/*   Updated: 2021/10/25 17:09:29 by ji-park          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dest, const char *src, size_t dstsize);
 char				*ft_strdup(const char *src);
 char				*ft_strjoin(char const *s1, char const *s2);
-int					ft_strncmp(char *str1, char *str2, size_t num);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *lit, size_t len);
 char				*ft_strchr(const char *s, int ch);
 char				*ft_strrchr(const char *s, int c);
