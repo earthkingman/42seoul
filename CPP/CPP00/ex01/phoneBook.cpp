@@ -9,7 +9,7 @@ void PhoneBook::addContact()
 
     max = this->getMaxNum();
     idx = this->getIdx();
-    if (idx > max)
+    if (idx >= max)
     {
         std::cout << "Full Contact"
                   << "\n";
@@ -35,8 +35,7 @@ void PhoneBook::addContact()
 
 void PhoneBook::showAllContact()
 {
-    int test = getIdx();
-    std::cout << test;
+    int max = getIdx();
     if (this->idx == 0)
     {
         std::cout << "No Contact"
@@ -47,7 +46,7 @@ void PhoneBook::showAllContact()
     std::cout << "|index     |first name|last name |nickname  |" << std::endl;
     std::cout << ".----------.----------.----------.----------." << std::endl;
 
-    for (int i = 0; i < test; i++)
+    for (int i = 0; i < max; i++)
     {
         std::cout << "|";
         std::string temp = std::to_string(i);
@@ -64,6 +63,7 @@ void PhoneBook::showAllContact()
 }
 void PhoneBook::showOneContact()
 {
+    int now_max = getIdx();
     int showIdx;
     int max = this->getMaxNum();
     if (this->idx == 0)
@@ -83,7 +83,7 @@ void PhoneBook::showOneContact()
         return;
     }
 
-    if (showIdx < 0 || showIdx > max)
+    if (showIdx < 0 || showIdx > max || showIdx > now_max)
     {
         std::cout << "Wrong index!\n";
         return;
