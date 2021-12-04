@@ -1,9 +1,9 @@
-NAME := phonebook
+NAME := account
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 CC := clang++
 RM := rm -rf
 
-SRCS := main.cpp PhoneBook.cpp Contact.cpp
+SRCS := tests.cpp Account.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 all : $(NAME)
