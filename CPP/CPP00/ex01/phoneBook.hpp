@@ -15,6 +15,8 @@ private:
 public:
     void setMaxNum(int maxnum);
     int getMaxNum();
+    void setNowNum(int nownum);
+    int getNowNum();
     int getIdx();
     void setIdx(int idx);
     void addContact();

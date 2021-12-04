@@ -5,16 +5,22 @@ void PhoneBook::addContact()
 {
     int idx;
     int max;
+    int now_max;
     std::string temp;
 
-    max = this->getMaxNum();
     idx = this->getIdx();
+    max = this->getMaxNum();
+    now_max = this->getNowNum();
     if (idx >= max)
     {
         std::cout << "Full Contact"
+                  << "Older contacts will be deleted first."
                   << "\n";
-        return;
+        this->setIdx(0);
+        idx = this->getIdx();
     }
+    if (now_max < max)
+        this->setNowNum(now_max + 1);
     this->setIdx(idx + 1);
     std::cout << "Input first name: ";
     std::cin >> temp;
@@ -35,7 +41,7 @@ void PhoneBook::addContact()
 
 void PhoneBook::showAllContact()
 {
-    int max = getIdx();
+    int max = getNowNum();
     if (this->idx == 0)
     {
         std::cout << "No Contact"
@@ -63,9 +69,10 @@ void PhoneBook::showAllContact()
 }
 void PhoneBook::showOneContact()
 {
-    int now_max = getIdx();
+    int now_max = getNowNum();
     int showIdx;
     int max = this->getMaxNum();
+
     if (this->idx == 0)
     {
         std::cout << "No Contact"
@@ -82,8 +89,7 @@ void PhoneBook::showOneContact()
         std::cout << "Wrong input! Please enter a number.\n";
         return;
     }
-
-    if (showIdx < 0 || showIdx > max || showIdx > now_max)
+    if (showIdx < 0 || showIdx > max || showIdx >= now_max)
     {
         std::cout << "Wrong index!\n";
         return;
@@ -103,6 +109,16 @@ int PhoneBook::getMaxNum()
 void PhoneBook::setMaxNum(int max_num)
 {
     this->max_num = max_num;
+};
+
+int PhoneBook::getNowNum()
+{
+    return this->now_num;
+};
+
+void PhoneBook::setNowNum(int now_num)
+{
+    this->now_num = now_num;
 };
 
 int PhoneBook::getIdx()

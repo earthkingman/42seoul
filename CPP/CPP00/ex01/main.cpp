@@ -7,6 +7,7 @@ int main(void)
     PhoneBook phoneBook;
     std::string str;
     phoneBook.setIdx(0);
+    phoneBook.setNowNum(0);
     phoneBook.setMaxNum(8);
     while (1)
     {
