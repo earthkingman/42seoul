@@ -7,7 +7,6 @@ Zombie *zombieHorde(int N, std::string name)
     for (int i = 0; i < N; i++)
     {
         ptr[i].SetmName(name + std::to_string(i));
-        i++;
     }
     return (ptr);
 }
