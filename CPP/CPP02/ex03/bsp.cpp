@@ -14,7 +14,7 @@
 */
 bool bsp(Point const a, Point const b, Point const c, Point const p)
 {
-    Fixed d1, d2, d3;
+    Fixed d1, d2, d3; //  ABC 임의의 3개의 점이 벡터연산을 통해 내외부를 판별
     //= 연산으로 Fixed(const float floatValue) 호출
     d1 = (b.GetX().toFloat() - p.GetX().toFloat()) * (a.GetY().toFloat() - p.GetY().toFloat()) -
          (a.GetX().toFloat() - p.GetX().toFloat()) * (b.GetY().toFloat() - p.GetY().toFloat());
